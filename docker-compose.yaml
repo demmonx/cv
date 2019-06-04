@@ -1,0 +1,17 @@
+version: '3'
+
+volumes:
+  src:
+
+services:
+
+  webserver:
+    image: php-symfony:1.0
+    environment:
+      DOMAIN_NAME: cyril-demery.fr
+    volumes: 
+      - /home/cdemery/cv/src:/var/www
+      - /home/cdemery/cv/install:/install
+    ports:
+      - 9000:80
+    
