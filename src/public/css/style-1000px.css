@@ -10,6 +10,9 @@
 
 	body
 	{
+	   min-width: auto;
+	   max-width: 1200px;
+	   
 	}
 
 	body,input,textarea,select
@@ -20,6 +23,10 @@
 	header
 	{
 		margin-bottom: 1.6em;
+		
+	}
+	#header {
+		padding: 9em 0 4em 0;
 	}
 	
 		header h2
@@ -30,6 +37,23 @@
 		header .byline
 		{
 			font-size: 1.2em;
+		}
+		
+	.container { 
+		max-width: 1100px;
+		width: 95%;
+		padding: 10px;
+		}
+		
+	#nav > ul > li > a
+	{
+		padding: 1em;
+	}
+	
+	@media all and (max-width: 850px) {
+		#nav .language_selector { 
+			position: relative; 
+		}
 		}
 
 /*********************************************************************************/
@@ -62,3 +86,6 @@
 	{
 		font-size: 1.6em;
 	}	
+	
+	#footer {
+	padding: 0 0 1em 0;

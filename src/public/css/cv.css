@@ -1,0 +1,16 @@
+#featured {
+	text-align: left;
+}
+
+#featured p {
+	line-height: 1em;
+	margin: 1em 0 1em 0;
+}
+
+hr {
+	padding: 0;
+}
+
+.first-item {
+	padding-top: 15px;
+}

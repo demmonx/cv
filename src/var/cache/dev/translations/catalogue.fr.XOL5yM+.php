@@ -117,6 +117,15 @@ $catalogue = new MessageCatalogue('fr', array (
     'Account is disabled.' => 'Le compte est désactivé.',
     'Account is locked.' => 'Le compte est bloqué.',
   ),
+  'messages' => 
+  array (
+    'A propos' => 'A propos',
+    'Projets' => 'Projets',
+    'Expériences' => 'Expériences',
+    'CV' => 'CV',
+    'Contact' => 'Contact',
+    'Administrateur Système' => 'Administrateur Système',
+  ),
 ));
 
 

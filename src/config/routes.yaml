@@ -1,3 +1,8 @@
 #index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+#   path: /{name}
+#   controller: App\Controller\DefaultController::index
+index:   
+   path: /
+   controller: App\Controller\MainController::index
+   defaults:
+        _locale: 'en'

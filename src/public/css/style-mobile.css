@@ -101,6 +101,11 @@
 		{
 			display: none;
 		}
+		
+		#titleBar h1 .tag
+		{
+			display: inline-block;
+		}
 
 		#titleBar .toggle
 		{
@@ -152,6 +157,10 @@
 				border-top: 0;
 			}
 			
+
+	
+
+			
 			#navPanel .link.depth-0
 			{
 				color: #fff;
@@ -170,6 +179,7 @@
 
 	#header
 	{
+		display: none;
 		height: 10em;
 		padding: 0;
 		background-position: center center;

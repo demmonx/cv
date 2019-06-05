@@ -802,6 +802,11 @@
 		{
 			color: #FFF;
 		}
+		
+		#logo h1 .tag
+		{
+			display: none;
+		}
 	
 		#logo a
 		{
@@ -881,6 +886,12 @@
 			{
 				display: none;
 			}
+			
+			#nav .language_selector { 
+				position: absolute; 
+				top: 0; 
+				right: 0;
+			}
 	
 /*********************************************************************************/
 /* Main                                                                          */
@@ -925,6 +936,28 @@
 	#footer header .byline
 	{
 		color: rgba(255,255,255,.2);
+	}
+	
+	#footer .links {
+		padding: 1em 0 0 0;
+	}
+	
+	#footer .links a
+	{
+		color: inherit;
+		font-size: 1em;
+		display: inline-block;
+		-moz-transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+		-webkit-transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+		-o-transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+		-ms-transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+		transition: color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+	}
+	
+	#footer .links a:hover
+	{
+		color: #fff;
+		text-decoration: none;
 	}
 
 /*********************************************************************************/

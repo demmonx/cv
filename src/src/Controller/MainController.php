@@ -2,19 +2,48 @@
 namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class MainController extends AbstractController
 {
-    /**,  requirements={"_locale"="en|fr"})
+    /**
      *  @Route({
-        "el": "/giasas",
-     *  "en": "/hello"
+        "fr": "/",
+     *  "en": "/home"
      * }, name="homepage")
-     * @Template("welcome.html.twig")
      */
-    public function index(TranslatorInterface $translator, $locales, $defaultLocale) {
+    public function index(Request $request) {
+		return $this->render($request->getLocale().'/index.html.twig');
+		//return $this->render($_locale);
     }
-
-}
+    
+    /**
+     *  @Route({
+        "fr": "/projets",
+     *  "en": "/projects"
+     * }, name="projets")
+     */
+    public function projet(Request $request) {
+		return $this->render($request->getLocale().'/projets.html.twig');
+    }
+    
+    /**
+     *  @Route({
+        "fr": "/experiences",
+     *  "en": "/experiences"
+     * }, name="exp")
+     */
+    public function experiences(Request $request) {
+		return $this->render($request->getLocale().'/exp.html.twig');
+    }
+    
+    /**
+     *  @Route({
+        "fr": "/cv",
+     *  "en": "/resume"
+     * }, name="cv")
+     */
+    public function cv(Request $request) {
+		return $this->render($request->getLocale().'/cv.html.twig');
+    }
+ }

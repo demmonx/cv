@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>{% block title %}{% endblock %}</title>
+		<title>{% block title %}{% endblock %} - Démery Cyril</title>
 		{{ include('layout/header.html.twig')  }}
 		{% block stylesheets %}{% endblock %}
     </head>
     <body>
 		<div id="header">{{include('layout/navbar.html.twig') }}</div>
-		{% block body %}{% endblock %}
+		<div id="featured">
+			<div class="container">
+				{% block body %}{% endblock %}
+			</div>
+		</div>
 		{% block javascripts %}{% endblock %}
 		
     </body>

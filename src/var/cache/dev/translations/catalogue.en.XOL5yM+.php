@@ -117,6 +117,15 @@ $catalogue = new MessageCatalogue('en', array (
     'Account is disabled.' => 'Account is disabled.',
     'Account is locked.' => 'Account is locked.',
   ),
+  'messages' => 
+  array (
+    'A propos' => 'About me',
+    'Projets' => 'Projects',
+    'Expériences' => 'Experiences',
+    'CV' => 'Resume',
+    'Contact' => 'Get in touch',
+    'Administrateur Système' => 'System Administrator',
+  ),
 ));
 
 $catalogueFr = new MessageCatalogue('fr', array (
@@ -233,6 +242,15 @@ $catalogueFr = new MessageCatalogue('fr', array (
     'Credentials have expired.' => 'Les identifiants ont expiré.',
     'Account is disabled.' => 'Le compte est désactivé.',
     'Account is locked.' => 'Le compte est bloqué.',
+  ),
+  'messages' => 
+  array (
+    'A propos' => 'A propos',
+    'Projets' => 'Projets',
+    'Expériences' => 'Expériences',
+    'CV' => 'CV',
+    'Contact' => 'Contact',
+    'Administrateur Système' => 'Administrateur Système',
   ),
 ));
 $catalogue->addFallbackCatalogue($catalogueFr);
