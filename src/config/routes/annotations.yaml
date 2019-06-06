@@ -1,3 +1,8 @@
+auth:
+    resource: ../../src/Controller/Auth
+    type: annotation
+    prefix: /
+
 front:
     resource: ../../src/Controller/Front
     type: annotation

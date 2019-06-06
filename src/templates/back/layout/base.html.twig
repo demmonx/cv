@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-		<title>{% block title %}{% endblock %} - Démery Cyril</title>
-		{{ include('layout/header.html.twig')  }}
+		<title>{% block title %}{% endblock %} - Admin</title>
+		{{ include('back/layout/header.html.twig')  }}
 		{% block stylesheets %}{% endblock %}
     </head>
     <body>
-		<div id="header">{{include('layout/navbar.html.twig') }}</div>
-		<div id="featured">
-			<div class="container">
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+			{{include('back/layout/navbar.html.twig') }}
+		</nav>
+		<div id="page-wrapper">
+            <div id="page-inner">
 				{% block body %}{% endblock %}
 			</div>
 		</div>
-		{% block javascripts %}{% endblock %}
+		
 		
     </body>
-    <div id="footer">
-		{{include('layout/footer.html.twig') }}
+    <div id="footer-sec" class='text-center'>
+		{{include('back/layout/footer.html.twig') }}
     </div>
+	{% block javascripts %}{% endblock %}
 </html>

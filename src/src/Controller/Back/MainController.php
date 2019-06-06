@@ -10,7 +10,7 @@ class MainController extends AbstractController
      *  @Route("/", name="admin.index")
      */
     public function index(Request $request) {
-		return $this->render("/fr/exp.html.twig");
+		return $this->render("/back/index.html.twig");
     }
     
  }

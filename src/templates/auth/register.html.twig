@@ -1,0 +1,47 @@
+
+{% extends 'auth/layout/base.html.twig' %}
+
+{% block title %}Install{% endblock %}
+
+{% block body %}
+
+    <h3>Install</h3>
+    <p>Hello ! This form will create an account to manage the website</p>
+
+    {{ form_start(registrationForm) }}
+
+
+        <div class="form-group input-group">
+            <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+            {{ form_row(registrationForm.firstname) }}
+        </div>
+
+        <div class="form-group input-group">
+                <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
+                {{ form_row(registrationForm.lastname) }}
+        </div>
+
+        <div class="form-group input-group">
+                <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
+                {{ form_row(registrationForm.jobLabel) }}
+        </div>
+    
+
+        <div class="form-group input-group">
+                <span class="input-group-addon"><i class="fa fa-envelope"  ></i></span>
+                {{ form_row(registrationForm.email) }}
+        </div>
+         
+        <div class="form-group input-group">
+                <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                {{ form_row(registrationForm.password.first) }}
+        </div>
+
+        <div class="form-group input-group">
+                 <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
+                {{ form_row(registrationForm.password.second) }}
+        </div>
+
+        <button type='submit' class="btn btn-primary ">Install</button>
+    {{ form_end(registrationForm) }}
+{% endblock %}

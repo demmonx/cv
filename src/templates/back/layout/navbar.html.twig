@@ -1,25 +1,86 @@
-<div id="nav-wrapper"> 
-	<!-- Nav -->
-	<nav id="nav">
-		<ul>
-			<li><a href="{{path('homepage')}}">{% trans %}A propos{% endtrans %}</a></li>
-			<li><a href="{{path('projets')}}">{% trans %}Projets{% endtrans %}</a></li>
-			<li><a href="{{path('exp')}}">{% trans %}Expériences{% endtrans %}</a></li>
-			<li><a href="{{path('cv')}}">{% trans %}CV{% endtrans %}</a></li>
-		</ul>	
-		
-		<ul class='language_selector'>
-			<li class='test'><a href="{{path('switch_language', {'locale':'fr'}) }}">FR</a></li>
-			<li><a href="{{path('switch_language', {'locale':'en'}) }}">EN</a></li>
-		</ul>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{path("admin.index")}}">FancyCV</a>
+            </div>
 
-	</nav>
-</div>
-<div class="container"> 
-	
-	<!-- Logo -->
-	<div id="logo">
-		<h1><a href='{{path('homepage')}}'>{% trans %}Administrateur Système{% endtrans %} <span class="tag"> - Cyril Démery</span></a></h1>
-		<span class="tag">Cyril Démery</span>
-	</div>
-</div>
+            <div class="header-right">
+                <!-- TOOD put link here -->
+            </div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    
+                    <li>
+                        <div class="user-img-div">
+                            <div class="inner-text">
+                                {{ app.user.firstname }} {{ app.user.lastname }}
+                            <br />
+                                <small>{{ app.user.username }} </small>
+                            </div>
+                            <div>
+                                <a href='{{path("admin.index")}}'><button class='btn btn-warning'>Change password</button></a>
+                                <a href='{{path("logout")}}' ><button  class='btn btn-danger'>Logout</button></a>
+                            </div>
+                        </div>
+
+                    </li>
+
+
+                    <li>
+                        <a class="active-menu" href="{{path("admin.index")}}"><i class="fa fa-dashboard "></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-desktop "></i>Experiences<span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="panel-tabs.html"><i class="fa fa-toggle-on"></i>Projects</a>
+                            </li>
+                            <li>
+                                <a href="notification.html"><i class="fa fa-bell "></i>Jobs</a>
+                            </li>                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-yelp "></i>About me <span class="fa arrow"></span></a>
+                             <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="invoice.html"><i class="fa fa-coffee"></i>Details</a>
+                                </li>
+                                <li>
+                                    <a href="pricing.html"><i class="fa fa-flash "></i>Social medias</a>
+                                </li>
+                                 <li>
+                                    <a href="component.html"><i class="fa fa-key "></i>Others informations</a>
+                                </li>                           
+                               
+                            </ul>
+                        </li>
+                     <li>
+                        <a href="#"><i class="fa fa-yelp "></i>Skills <span class="fa arrow"></span></a>
+                         <ul class="nav nav-second-level">
+                            <li>
+                                <a href="invoice.html"><i class="fa fa-coffee"></i>Technical</a>
+                            </li>
+                            <li>
+                                <a href="pricing.html"><i class="fa fa-flash "></i>Soft</a>
+                            </li>
+                             <li>
+                                <a href="component.html"><i class="fa fa-key "></i>Languages</a>
+                            </li>                           
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="table.html"><i class="fa fa-flash "></i>Hobbies</a>
+                    </li>                    
+                </ul>
+
+            </div>
