@@ -385,18 +385,25 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/var/www/var/log/dev.log</argument>
     </service>
-    <service id="App\Controller\LocaleSwitchController" class="App\Controller\LocaleSwitchController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Back\MainController" class="App\Controller\Back\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.h1yB4D5.App\Controller\LocaleSwitchController"/>
+        <argument type="service" id=".service_locator.h1yB4D5.App\Controller\Back\MainController"/>
       </call>
     </service>
-    <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\Front\LocaleSwitchController" class="App\Controller\Front\LocaleSwitchController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
-        <argument type="service" id=".service_locator.h1yB4D5.App\Controller\MainController"/>
+        <argument type="service" id=".service_locator.h1yB4D5.App\Controller\Front\LocaleSwitchController"/>
+      </call>
+    </service>
+    <service id="App\Controller\Front\MainController" class="App\Controller\Front\MainController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.h1yB4D5.App\Controller\Front\MainController"/>
       </call>
     </service>
     <service id="App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" public="false" autowire="true" autoconfigure="true">
@@ -4503,12 +4510,15 @@
         <argument>server:log</argument>
       </call>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LocaleSwitchController" class="App\Controller\LocaleSwitchController" public="false" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LocaleSwitchController" class="App\Controller\LocaleSwitchController" public="false" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\LocaleSwitchController" class="App\Controller\LocaleSwitchController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" public="false" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" public="false" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Back\MainController" class="App\Controller\Back\MainController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Back\MainController" class="App\Controller\Back\MainController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Back\MainController" class="App\Controller\Back\MainController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\LocaleSwitchController" class="App\Controller\Front\LocaleSwitchController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\LocaleSwitchController" class="App\Controller\Front\LocaleSwitchController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\LocaleSwitchController" class="App\Controller\Front\LocaleSwitchController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Front\MainController" class="App\Controller\Front\MainController" public="false" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Front\MainController" class="App\Controller\Front\MainController" public="false" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Front\MainController" class="App\Controller\Front\MainController" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" public="false" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\EventListener\LocaleListener" class="App\EventListener\LocaleListener" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\EventDispatcher\EventSubscriberInterface.0.app.locale_listener" class="App\EventListener\LocaleListener" public="false" autowire="true" abstract="true"/>
@@ -4968,15 +4978,21 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
-    <service id=".service_locator.h1yB4D5.App\Controller\LocaleSwitchController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\LocaleSwitchController"/>
-      <argument>App\Controller\LocaleSwitchController</argument>
+    <service id=".service_locator.h1yB4D5.App\Controller\Back\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Back\MainController"/>
+      <argument>App\Controller\Back\MainController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.h1yB4D5" method="withContext"/>
     </service>
-    <service id=".service_locator.h1yB4D5.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\MainController"/>
-      <argument>App\Controller\MainController</argument>
+    <service id=".service_locator.h1yB4D5.App\Controller\Front\LocaleSwitchController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Front\LocaleSwitchController"/>
+      <argument>App\Controller\Front\LocaleSwitchController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.h1yB4D5" method="withContext"/>
+    </service>
+    <service id=".service_locator.h1yB4D5.App\Controller\Front\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Front\MainController"/>
+      <argument>App\Controller\Front\MainController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.h1yB4D5" method="withContext"/>
     </service>

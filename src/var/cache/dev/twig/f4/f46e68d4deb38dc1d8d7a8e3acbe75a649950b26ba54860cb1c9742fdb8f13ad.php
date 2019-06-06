@@ -160,6 +160,17 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
             <div class=\"w3-container w3-center w3-round-xlarge w3-teal\" style=\"width:30%\">30%</div>
           </div>
           <br>
+          
+          <p class=\"w3-large\"><b><i class=\"fa fa-users fa-fw 
+          w3-margin-right w3-text-teal\"></i>Compétences personnelles</b></p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Curieux</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Organisé</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Autonome</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Team player</p>
 
           <p class=\"w3-large w3-text-theme\"><b><i class=\"fa fa-globe fa-fw w3-margin-right w3-text-teal\"></i>Langues</b></p>
           <p>Français</p>
@@ -177,7 +188,8 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
           <br>
           
           <p class=\"w3-large\"><b><i class=\"fa fa-question fa-fw w3-margin-right w3-text-teal\"></i>Complément</b></p>
-          <p><i class=\"fa fa-address-card fa-fw w3-margin-right w3-text-teal\"></i>Permis de conduire</p>
+          <p><i class=\"fa fa-address-card fa-fw w3-margin-right 
+          w3-text-teal\"></i> Permis de conduire</p>
           <p><i class=\"fa fa-car fa-fw w3-margin-right w3-text-teal\"></i> Véhicule personnel</p>
           
           
@@ -193,28 +205,44 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
     <div class=\"w3-twothird\">
     
       <div class=\"w3-container w3-card w3-white w3-margin-bottom\">
-        <h2 class=\"w3-text-grey w3-padding-16\"><i class=\"fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal\"></i>Work Experience</h2>
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-suitcase fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Expériences</h2>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Jan 2015 - <span class=\"w3-tag w3-teal w3-round\">Current</span></h6>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <h5 class=\"w3-opacity\"><b>Administrateur système</b> - <i>SII, Toulouse, France (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mars 2019 - <span class=\"w3-tag w3-teal w3-round\">Actuel</span></h6>
+          <p>Développement d'un système pour déployer automatiquement une infratructure sécurisée basée sur une fichier de configuration facilement compréhensible par un humain et décrivant toute la configuration de l'infrastrucure</p>
           <hr>
         </div>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Web Developer / something.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mar 2012 - Dec 2014</h6>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <h5 class=\"w3-opacity\"><b>Développeur Web (Symfony)</b> - 
+          <i>Check Your Smile, Toulouse, France (projet scolaire)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Janvier 2019 - Mars 2019</h6>
+          <p>Conception, développement et implémentation de nouveaux modules, débugage des parties existantes du site</p>
           <hr>
         </div>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Graphic Designer / designsomething.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Jun 2010 - Mar 2012</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+          <h5 class=\"w3-opacity\"><b>Analyste Big Data</b> - <i>SUPSI, 
+          Manno, Suisse (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Juin 2017 - Juillet 2017</h6>
+          <p>Analyse du comportement d'utilisateurs basés sur leurs activités sur les réseaux sociaux et leurs objets connectés, avec Python</p>
+\t\t\t<hr>
+        </div>
+        <div class=\"w3-container\">
+           <h5 class=\"w3-opacity\"><b>Dépannage informatique</b> - 
+           <i>IT Center, Soual, France (stage)</i></h5>
+           <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Juillet 2017 - Août 2017</h6>
+           <p>Dépannage (logiciel et matériel) d'ordinateurs portables et fixes, pour particuliers et professionnels, vente de matériel informatique</p>
+\t\t\t<hr>
+        </div>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>Développeur Web (Laravel)</b> - 
+          <i>Stratégies Web International, Québec, Canada (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mars 2016 - Juin 2016</h6>
+          <p>Conception d'un portail web, configuration de serveurs (web, base de données, mail, git)</p>
         </div>
       </div>
 
       <div class=\"w3-container w3-card w3-white\">
-        <h2 class=\"w3-text-grey w3-padding-16\"><i class=\"fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal\"></i>Education</h2>
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-certificate fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Education</h2>
         <div class=\"w3-container\">
           <h5 class=\"w3-opacity\"><b>Diplôme d'ingénieur</b> - <i>ENSEEIHT, Toulouse, France</i></h5>
           <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>2016 - 2019</h6>
@@ -233,6 +261,19 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
           <p>Mention Bien <br />
 \t\t\tPhysique, Chimie, Mathématiques, Sciences de l'Ingénieur
 \t\t</p><br>
+        </div>
+      </div>
+      
+      <div class=\"w3-container w3-card w3-white\">
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-television fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Loisirs</h2>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>VTT</b></h5>
+          <p>Ouverture et maintenance des chemins existants, rouler tous les WE, quelques compétitions (régionnales et nationales), faire de la mécanique</p>
+          <hr>
+        </div>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>Voyages</b></h5>
+          <p>Découvrir de nouvelles destinations, visiter des nouveaux pays et villes, j'ai voyagé plusieurs fois pour mes études (stage au Quebec et en Suisse)</p>
         </div>
       </div>
 
@@ -321,6 +362,17 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
             <div class=\"w3-container w3-center w3-round-xlarge w3-teal\" style=\"width:30%\">30%</div>
           </div>
           <br>
+          
+          <p class=\"w3-large\"><b><i class=\"fa fa-users fa-fw 
+          w3-margin-right w3-text-teal\"></i>Compétences personnelles</b></p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Curieux</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Organisé</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Autonome</p>
+          <p><i class=\"fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
+          w3-text-teal\"></i> Team player</p>
 
           <p class=\"w3-large w3-text-theme\"><b><i class=\"fa fa-globe fa-fw w3-margin-right w3-text-teal\"></i>Langues</b></p>
           <p>Français</p>
@@ -338,7 +390,8 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
           <br>
           
           <p class=\"w3-large\"><b><i class=\"fa fa-question fa-fw w3-margin-right w3-text-teal\"></i>Complément</b></p>
-          <p><i class=\"fa fa-address-card fa-fw w3-margin-right w3-text-teal\"></i>Permis de conduire</p>
+          <p><i class=\"fa fa-address-card fa-fw w3-margin-right 
+          w3-text-teal\"></i> Permis de conduire</p>
           <p><i class=\"fa fa-car fa-fw w3-margin-right w3-text-teal\"></i> Véhicule personnel</p>
           
           
@@ -354,28 +407,44 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
     <div class=\"w3-twothird\">
     
       <div class=\"w3-container w3-card w3-white w3-margin-bottom\">
-        <h2 class=\"w3-text-grey w3-padding-16\"><i class=\"fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal\"></i>Work Experience</h2>
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-suitcase fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Expériences</h2>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Front End Developer / w3schools.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Jan 2015 - <span class=\"w3-tag w3-teal w3-round\">Current</span></h6>
-          <p>Lorem ipsum dolor sit amet. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <h5 class=\"w3-opacity\"><b>Administrateur système</b> - <i>SII, Toulouse, France (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mars 2019 - <span class=\"w3-tag w3-teal w3-round\">Actuel</span></h6>
+          <p>Développement d'un système pour déployer automatiquement une infratructure sécurisée basée sur une fichier de configuration facilement compréhensible par un humain et décrivant toute la configuration de l'infrastrucure</p>
           <hr>
         </div>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Web Developer / something.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mar 2012 - Dec 2014</h6>
-          <p>Consectetur adipisicing elit. Praesentium magnam consectetur vel in deserunt aspernatur est reprehenderit sunt hic. Nulla tempora soluta ea et odio, unde doloremque repellendus iure, iste.</p>
+          <h5 class=\"w3-opacity\"><b>Développeur Web (Symfony)</b> - 
+          <i>Check Your Smile, Toulouse, France (projet scolaire)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Janvier 2019 - Mars 2019</h6>
+          <p>Conception, développement et implémentation de nouveaux modules, débugage des parties existantes du site</p>
           <hr>
         </div>
         <div class=\"w3-container\">
-          <h5 class=\"w3-opacity\"><b>Graphic Designer / designsomething.com</b></h5>
-          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Jun 2010 - Mar 2012</h6>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p><br>
+          <h5 class=\"w3-opacity\"><b>Analyste Big Data</b> - <i>SUPSI, 
+          Manno, Suisse (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Juin 2017 - Juillet 2017</h6>
+          <p>Analyse du comportement d'utilisateurs basés sur leurs activités sur les réseaux sociaux et leurs objets connectés, avec Python</p>
+\t\t\t<hr>
+        </div>
+        <div class=\"w3-container\">
+           <h5 class=\"w3-opacity\"><b>Dépannage informatique</b> - 
+           <i>IT Center, Soual, France (stage)</i></h5>
+           <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Juillet 2017 - Août 2017</h6>
+           <p>Dépannage (logiciel et matériel) d'ordinateurs portables et fixes, pour particuliers et professionnels, vente de matériel informatique</p>
+\t\t\t<hr>
+        </div>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>Développeur Web (Laravel)</b> - 
+          <i>Stratégies Web International, Québec, Canada (stage)</i></h5>
+          <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>Mars 2016 - Juin 2016</h6>
+          <p>Conception d'un portail web, configuration de serveurs (web, base de données, mail, git)</p>
         </div>
       </div>
 
       <div class=\"w3-container w3-card w3-white\">
-        <h2 class=\"w3-text-grey w3-padding-16\"><i class=\"fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal\"></i>Education</h2>
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-certificate fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Education</h2>
         <div class=\"w3-container\">
           <h5 class=\"w3-opacity\"><b>Diplôme d'ingénieur</b> - <i>ENSEEIHT, Toulouse, France</i></h5>
           <h6 class=\"w3-text-teal\"><i class=\"fa fa-calendar fa-fw w3-margin-right\"></i>2016 - 2019</h6>
@@ -394,6 +463,19 @@ class __TwigTemplate_83b1534b58f54af66485f2242816da9ee0a069beecb94ebb8b507d874b0
           <p>Mention Bien <br />
 \t\t\tPhysique, Chimie, Mathématiques, Sciences de l'Ingénieur
 \t\t</p><br>
+        </div>
+      </div>
+      
+      <div class=\"w3-container w3-card w3-white\">
+        <h2 class=\"w3-text-grey w3-padding-10\"><i class=\"fa fa-television fa-fw w3-margin-right w3-xlarge w3-text-teal\"></i>Loisirs</h2>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>VTT</b></h5>
+          <p>Ouverture et maintenance des chemins existants, rouler tous les WE, quelques compétitions (régionnales et nationales), faire de la mécanique</p>
+          <hr>
+        </div>
+        <div class=\"w3-container\">
+          <h5 class=\"w3-opacity\"><b>Voyages</b></h5>
+          <p>Découvrir de nouvelles destinations, visiter des nouveaux pays et villes, j'ai voyagé plusieurs fois pour mes études (stage au Quebec et en Suisse)</p>
         </div>
       </div>
 
