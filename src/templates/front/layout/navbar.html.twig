@@ -1,0 +1,25 @@
+<div id="nav-wrapper"> 
+	<!-- Nav -->
+	<nav id="nav">
+		<ul>
+			<li><a href="{{path('homepage')}}">{% trans %}A propos{% endtrans %}</a></li>
+			<li><a href="{{path('projets')}}">{% trans %}Projets{% endtrans %}</a></li>
+			<li><a href="{{path('exp')}}">{% trans %}Expériences{% endtrans %}</a></li>
+			<li><a href="{{path('cv')}}">{% trans %}CV{% endtrans %}</a></li>
+		</ul>	
+		
+		<ul class='language_selector'>
+			<li class='test'><a href="{{path('switch_language', {'locale':'fr'}) }}">FR</a></li>
+			<li><a href="{{path('switch_language', {'locale':'en'}) }}">EN</a></li>
+		</ul>
+
+	</nav>
+</div>
+<div class="container"> 
+	
+	<!-- Logo -->
+	<div id="logo">
+		<h1><a href='{{path('homepage')}}'>{% trans %}Administrateur Système{% endtrans %} <span class="tag"> - Cyril Démery</span></a></h1>
+		<span class="tag">Cyril Démery</span>
+	</div>
+</div>

@@ -13,7 +13,7 @@ class MainController extends AbstractController
      * }, name="homepage")
      */
     public function index(Request $request) {
-		return $this->render($request->getLocale().'/index.html.twig');
+		return $this->render('front/'.$request->getLocale().'/index.html.twig');
 		//return $this->render($_locale);
     }
     
@@ -24,7 +24,7 @@ class MainController extends AbstractController
      * }, name="projets")
      */
     public function projet(Request $request) {
-		return $this->render($request->getLocale().'/projets.html.twig');
+		return $this->render('front/'.$request->getLocale().'/projets.html.twig');
     }
     
     /**
@@ -34,7 +34,7 @@ class MainController extends AbstractController
      * }, name="exp")
      */
     public function experiences(Request $request) {
-		return $this->render($request->getLocale().'/exp.html.twig');
+		return $this->render('front/'.$request->getLocale().'/exp.html.twig');
     }
     
     /**
@@ -44,6 +44,6 @@ class MainController extends AbstractController
      * }, name="cv")
      */
     public function cv(Request $request) {
-		return $this->render($request->getLocale().'/cv.html.twig');
+		return $this->render('front/'.$request->getLocale().'/cv.html.twig');
     }
  }

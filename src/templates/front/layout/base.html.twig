@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>{% block title %}{% endblock %} - Démery Cyril</title>
+		{{ include('front/layout/header.html.twig')  }}
+		{% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+		<div id="header">{{include('front/layout/navbar.html.twig') }}</div>
+		<div id="featured">
+			<div class="container">
+				{% block body %}{% endblock %}
+			</div>
+		</div>
+		{% block javascripts %}{% endblock %}
+		
+    </body>
+    <div id="footer">
+		{{include('front/layout/footer.html.twig') }}
+    </div>
+</html>
