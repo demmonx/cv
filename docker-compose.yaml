@@ -33,8 +33,8 @@ services:
       DB_PASSWD: ik4FgR12zEgD
       DB_PORT: 5432
     volumes: 
-      - /home/cdemery/cv/src:/var/www
-      - /home/cdemery/cv/install:/install
+      - /home/cyril/prog/php/cv/src:/var/www
+      - /home/cyril/prog/php/cv/install:/install
     ports:
       - 9000:80
     depends_on: 

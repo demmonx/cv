@@ -10,38 +10,42 @@
 
     {{ form_start(registrationForm) }}
 
-
+    {{ form_errors(registrationForm.firstname) }}
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
-            {{ form_row(registrationForm.firstname) }}
+            {{ form_widget(registrationForm.firstname) }}
         </div>
 
+        {{ form_errors(registrationForm.lastname) }}
         <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-user"  ></i></span>
-                {{ form_row(registrationForm.lastname) }}
+                {{ form_widget(registrationForm.lastname) }}
         </div>
 
+        {{ form_errors(registrationForm.jobLabel) }}
         <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-tag"  ></i></span>
-                {{ form_row(registrationForm.jobLabel) }}
+                {{ form_widget(registrationForm.jobLabel) }}
         </div>
     
-
+        {{ form_errors(registrationForm.email) }}
         <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope"  ></i></span>
-                {{ form_row(registrationForm.email) }}
+                {{ form_widget(registrationForm.email) }}
         </div>
          
+        {{ form_errors(registrationForm.password.first) }}
         <div class="form-group input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                {{ form_row(registrationForm.password.first) }}
+                {{ form_widget(registrationForm.password.first) }}
         </div>
 
+        {{ form_errors(registrationForm.password.second) }}
         <div class="form-group input-group">
                  <span class="input-group-addon"><i class="fa fa-lock"  ></i></span>
-                {{ form_row(registrationForm.password.second) }}
+                {{ form_widget(registrationForm.password.second) }}
         </div>
 
-        <button type='submit' class="btn btn-primary ">Install</button>
+        {{ form_row(form.submit) }}
     {{ form_end(registrationForm) }}
 {% endblock %}
