@@ -16,3 +16,4 @@ back:
     resource: ../../src/Controller/Back
     type: annotation
     prefix: /admin
+

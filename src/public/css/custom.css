@@ -242,5 +242,62 @@ ul#filters {
         opacity:.2;
 		float:left;
 		overflow:hidden;
-	}
+    }
+    
+    .header-right ul li {
+        display: inline-block;
+        
+    }
+    .header-right ul li button {
+        text-transform: uppercase;
+    }
+
+    .header-left {
+        vertical-align: middle;
+        padding: 20px 50px 5px 50px;
+        float: left;
+        color: #555;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    .page-head-line {
+        padding-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .user-img-div {
+        min-height: 50px;
+        color: white;
+    }
+
+    .user-img-div .name {
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+
+    .user-img-div .email {
+        font-size: 15px;
+    }
+
+    .big {
+        font-size: 24px;
+    }
+
 	
+    .options li {
+        display: inline-block;
+        margin: 5px 5px 0 0;
+    }
+
+    .options {
+        padding-inline-start: 0;
+    }
+
+    #page-inner a:active {
+        color: #777;
+    }
+
+    td form {
+        display: inline-block;
+    }

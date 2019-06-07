@@ -1,0 +1,14 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My profile{% endblock %}
+{% block title %}Extra Infos{% endblock %}
+
+{% block title_content %}New Extra Info{% endblock %}
+
+{% block body %}
+{{ include('back/user/extra/_form.html.twig') }}
+
+
+<ul class='options'>
+    <li><a href="{{ path('admin.user.extra.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
+</ul>
+{% endblock %}

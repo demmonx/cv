@@ -1,76 +1,74 @@
-
-    <div class="sidebar-collapse">
-        <ul class="nav" id="main-menu">
-
-
-            <li>
-                <div class="user-img-div">
-                    <div class="inner-text">
-                        {{ app.user.firstname }} {{ app.user.lastname }}
-                        <br />
-                        <small>{{ app.user.username }} </small>
-                        <a href='{{path("logout")}}'><button class='btn btn-danger'>Logout</button></a>
-                    </div>
-
-                </div>
-
-            </li>
-
-            <li>
-                    <a class="active-menu" href="{{path("admin.index")}}"><i class="fa fa-dashboard "></i>Dashboard</a>
-            </li>
-            <li>
-                <a href="#"><i class="fa fa-user "></i>About me <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="invoice.html"><i class="fa fa-bars"></i>Details</a>
-                    </li>
-                    <li>
-                        <a href="pricing.html"><i class="fa fa-facebook "></i>Social medias</a>
-                    </li>
-                    <li>
-                        <a href="component.html"><i class="fa fa-plus "></i>Others informations</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('admin.password.reset') }}"><i class="fa fa-lock "></i>Change password</a>
-                    </li>
-
-                </ul>
-            </li>
+<div class="sidebar-collapse">
+    <ul class="nav" id="main-menu">
 
 
-            <li>
-                <a href="#"><i class="fa fa-briefcase "></i>Experiences<span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="panel-tabs.html"><i class="fa fa-book"></i>Projects</a>
-                    </li>
-                    <li>
-                        <a href="notification.html"><i class="fa fa-industry "></i>Jobs</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                    <a href="table.html"><i class="fa fa-mortar-board "></i>Education</a>
+        <li>
+            <div class="user-img-div">
+
+                <span class='name'>{{ app.user.firstname }} {{ app.user.lastname }}</span>
+                <br />
+                <span class='email'>{{ app.user.jobLabel }} </span>
+                <br />
+                <span class='email'>{{ app.user.username }} </span>
+            </div>
+
+        </li>
+
+        <li>
+            <a class="active-menu" href="{{path("admin.index")}}"><i class="fa fa-dashboard "></i>Dashboard</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-user "></i>About me <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="invoice.html"><i class="fa fa-bars"></i>Details</a>
                 </li>
-            <li>
-                <a href="#"><i class="fa fa-gear "></i>Skills <span class="fa arrow"></span></a>
-                <ul class="nav nav-second-level">
-                    <li>
-                        <a href="invoice.html"><i class="fa fa-gears"></i>Technical</a>
-                    </li>
-                    <li>
-                        <a href="pricing.html"><i class="fa fa-handhsake "></i>Soft</a>
-                    </li>
-                    <li>
-                        <a href="component.html"><i class="fa fa-commenting "></i>Languages</a>
-                    </li>
+                <li>
+                    <a href="pricing.html"><i class="fa fa-facebook "></i>Social medias</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin.user.extra.index') }}"><i class="fa fa-plus "></i>Others informations</a>
+                </li>
+                <li>
+                    <a href="{{ path('admin.user.password.reset') }}"><i class="fa fa-lock "></i>Change password</a>
+                </li>
 
-                </ul>
-            </li>
-            <li>
-                <a href="table.html"><i class="fa fa-coffee "></i>Hobbies</a>
-            </li>
-        </ul>
+            </ul>
+        </li>
 
-    </div>
+
+        <li>
+            <a href="#"><i class="fa fa-briefcase "></i>Experiences<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="panel-tabs.html"><i class="fa fa-book"></i>Projects</a>
+                </li>
+                <li>
+                    <a href="notification.html"><i class="fa fa-industry "></i>Jobs</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="table.html"><i class="fa fa-mortar-board "></i>Education</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-gear "></i>Skills <span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level">
+                <li>
+                    <a href="{{path('admin.skill.technical.index')}}"><i class="fa fa-gears"></i>Technical</a>
+                </li>
+                <li>
+                    <a href="{{path('admin.skill.soft.index')}}"><i class="fa fa-users "></i>Soft</a>
+                </li>
+                <li>
+                    <a href="{{path('admin.skill.language.index')}}"><i class="fa fa-commenting "></i>Languages</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="{{path('admin.hobby.index')}}"><i class="fa fa-coffee "></i>Hobbies</a>
+        </li>
+    </ul>
+
+</div>

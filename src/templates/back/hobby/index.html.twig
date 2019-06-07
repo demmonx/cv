@@ -1,0 +1,36 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My hobbies{% endblock %}
+{% block title %}Hobbies{% endblock %}
+
+{% block title_content %}Hobbies{% endblock %}
+
+{% block body %}
+<div>
+    <a href="{{ path('admin.hobby.add') }}"><button class='text-uppercase btn btn-success'>Add new</button></a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hobby in hobbies %}
+        <tr>
+            <td>{{ hobby.name }}</td>
+            <td>
+                <a href="{{ path('admin.hobby.show', {'id': hobby.id}) }}"><button
+                        class='btn btn-info'>Show</button></a>
+                <a href="{{ path('admin.hobby.edit', {'id': hobby.id}) }}"><button class='btn btn-info'>Edit</button></a>
+                {{ include('back/hobby/_delete_form.html.twig') }}
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">No records found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

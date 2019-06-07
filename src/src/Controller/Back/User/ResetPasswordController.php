@@ -1,9 +1,9 @@
 <?php
-namespace App\Controller\Back;
+namespace App\Controller\Back\User;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use App\Form\Auth\ResetPasswordForm;
+use App\Form\Back\User\ResetPasswordForm;
 use Symfony\Component\Form\FormError;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class ResetPasswordController extends AbstractController
 {
     /**
-     * @Route("/password/reset", name="admin.password.reset")
+     * @Route("/password/reset", name="admin.user.password.reset")
      */
     public function edit(Request $request,  UserPasswordEncoderInterface $passwordEncoder)
     {

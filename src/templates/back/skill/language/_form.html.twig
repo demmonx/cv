@@ -1,0 +1,16 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{{ form_errors(form.name) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+    {{ form_widget(form.name) }}
+</div>
+
+{{ form_errors(form.level) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-image"></i></span>
+    {{ form_widget(form.level) }}
+</div>
+
+{{ form_widget(form.submit) }} 
+{{ form_end(form) }}

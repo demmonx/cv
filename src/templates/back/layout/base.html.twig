@@ -12,8 +12,14 @@
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
 			{{include('back/layout/navbar-header.html.twig') }}
 
+			<div class="header-left">{% block title_section %}{% endblock %}</div>
+
 			<div class="header-right">
-				<h4>{% block title_section %}{% endblock %}</h4>
+				<ul>
+					<li><a href='{{path("homepage")}}'><button class='btn btn-info'>Website</button></a></li>
+					<li><a href='{{path("logout")}}'><button class='btn btn-danger'>Logout</button></a></li>
+				</ul>
+
 			</div>
 		</nav>
 		<nav class="navbar-default navbar-side" role="navigation">
@@ -47,7 +53,14 @@
 			{% endfor %}
 
 			<div id="page-inner">
-				<h2>{% block title_content %}{% endblock %}</h2>
+
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="page-head-line text-uppercase">{% block title_content %}{% endblock %}</h1>
+						</h1>
+
+					</div>
+				</div>
 				{% block body %}{% endblock %}
 			</div>
 		</div>
