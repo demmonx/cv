@@ -1,0 +1,14 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My profile{% endblock %}
+{% block title %}Socials{% endblock %}
+
+{% block title_content %}Edit a social network{% endblock %}
+
+{% block body %}
+    {{ include('back/user/social/_form.html.twig') }}
+
+    <ul class="options">
+        <li><a href="{{ path('admin.user.social.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
+        <li>{{ include('back/user/social/_delete_form.html.twig') }}</li>
+    </ul>
+{% endblock %}

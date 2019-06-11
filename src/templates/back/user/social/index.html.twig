@@ -1,0 +1,37 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My profile{% endblock %}
+{% block title %}Socials{% endblock %}
+
+{% block title_content %}Socials{% endblock %}
+
+{% block body %}
+<div>
+        <a href="{{ path('admin.user.social.add') }}"><button class='text-uppercase btn btn-success'>Add new</button></a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Url</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for social in socials %}
+            <tr>
+                <td>{{ social.name }}</td>
+                <td><a href="{{ social.url }}" target="_blank"><button class='btn btn-info'>Go</button></a></td>
+                <td>
+                    <a href="{{ path('admin.user.social.edit', {'id': social.id}) }}"><button class='btn btn-info'>Edit</button></a> 
+                    {{ include('back/user/social/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

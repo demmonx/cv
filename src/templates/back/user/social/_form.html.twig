@@ -6,11 +6,13 @@
     {{ form_widget(form.name) }}
 </div>
 
-{{ form_errors(form.level) }}
+{{ form_errors(form.url) }}
 <div class="form-group input-group">
-    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
-    {{ form_widget(form.level) }}
+    <span class="input-group-addon"><i class="fa fa-hashtag"></i></span>
+    {{ form_widget(form.url) }}
 </div>
 
 {{ form_widget(form.submit) }} 
 {{ form_end(form) }}
+
+

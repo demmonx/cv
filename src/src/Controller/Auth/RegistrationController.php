@@ -28,7 +28,7 @@ class RegistrationController extends AbstractController
         ->getSingleScalarResult();
 
         if ($users > 0) {
-            //return $this->redirectToRoute('homepage'); 
+            return $this->redirectToRoute('homepage'); 
         }
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);

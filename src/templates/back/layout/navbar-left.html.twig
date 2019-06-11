@@ -21,10 +21,10 @@
             <a href="#"><i class="fa fa-user "></i>About me <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
                 <li>
-                    <a href="invoice.html"><i class="fa fa-bars"></i>Details</a>
+                    <a href="{{ path('admin.user.details.index') }}"><i class="fa fa-bars"></i>Details</a>
                 </li>
                 <li>
-                    <a href="pricing.html"><i class="fa fa-facebook "></i>Social medias</a>
+                    <a href="{{ path('admin.user.social.index') }}"><i class="fa fa-facebook "></i>Social medias</a>
                 </li>
                 <li>
                     <a href="{{ path('admin.user.extra.index') }}"><i class="fa fa-plus "></i>Others informations</a>

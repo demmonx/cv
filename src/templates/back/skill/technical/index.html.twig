@@ -20,7 +20,7 @@
         {% for technical_skill in technical_skills %}
             <tr>
                 <td>{{ technical_skill.name }}</td>
-                <td>{{ technical_skill.level }}</td>
+                <td>{{ technical_skill.level }} %</td>
                 <td>
                         <a href="{{ path('admin.skill.technical.edit', {'id': technical_skill.id}) }}"><button class='btn btn-info'>Edit</button></a> 
                         {{ include('back/skill/technical/_delete_form.html.twig') }}
