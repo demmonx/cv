@@ -250,6 +250,7 @@ ul#filters {
     }
     .header-right ul li button {
         text-transform: uppercase;
+        font-weight: bold;
     }
 
     .header-left {

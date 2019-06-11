@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\UrlType;
 
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Url;
 
 class SocialType extends AbstractType
 {
@@ -39,6 +40,9 @@ class SocialType extends AbstractType
             'constraints' => [
                 new NotBlank([
                     'message' => 'Please enter the url',
+                ]),
+                new Url([
+                    'message' => 'The url "{{ value }}" is not a valid url.',
                 ]),
                 new Length([
                     'min' => 2,

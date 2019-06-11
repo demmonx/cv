@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SchoolRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\StudyRepository")
  */
-class School
+class Study
 {
     /**
      * @ORM\Id()
@@ -32,9 +32,18 @@ class School
     private $startDate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $endDate;
+        /**
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
+            /**
+     * @ORM\Column(type="boolean")
+     */
+    private $current;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -87,7 +96,8 @@ class School
         return $this->endDate;
     }
 
-    public function setEndDate(\DateTimeInterface $endDate): self
+
+    public function setEndDate(?\DateTimeInterface $endDate): self
     {
         $this->endDate = $endDate;
 
@@ -102,6 +112,30 @@ class School
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function isCurrent(): ?bool
+    {
+        return $this->current;
+    }
+
+    public function setCurrent(?bool $current): self
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    public function isEnabled(): ?bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(?bool $enabled): self
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }

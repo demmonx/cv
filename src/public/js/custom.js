@@ -90,6 +90,10 @@
         mainApp.slide_show();
         mainApp.reviews_fun();
         mainApp.wizard_fun();
+
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        });
        
     });
 }(jQuery));
