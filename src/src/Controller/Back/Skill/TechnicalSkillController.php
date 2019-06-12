@@ -49,7 +49,7 @@ class TechnicalSkillController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, TechnicalSkill $technicalSkill): Response
     {
@@ -69,7 +69,7 @@ class TechnicalSkillController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, TechnicalSkill $technicalSkill): Response
     {

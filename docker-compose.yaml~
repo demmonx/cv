@@ -1,0 +1,42 @@
+version: '3'
+
+volumes:
+  src:
+
+volumes:
+  postgres_data:
+      driver: local
+  src:
+
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: cv
+      POSTGRES_USER: cv
+      POSTGRES_PASSWORD: ik4FgR12zEgD
+  adminer:
+    image: adminer
+    ports:
+      - 8082:8080
+
+  webserver:
+    image: php-symfony:1.0
+    environment:
+      DOMAIN_NAME: cyril-demery.fr
+      DB_HOST: postgres
+      DB_DRIVER: pgsql
+      DB_NAME: cv
+      DB_USER: cv
+      DB_PASSWD: ik4FgR12zEgD
+      DB_PORT: 5432
+    volumes: 
+      - /mnt/work/programmation/php/cv/src:/var/www
+      - /mnt/work/programmation/php/cv/install:/install
+    ports:
+      - 9000:80
+    depends_on: 
+      - postgres
+    

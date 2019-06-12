@@ -35,11 +35,25 @@ class StudyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($study);
-            $entityManager->flush();
-            $this->addFlash('success', "Item has been successfully added");
-            return $this->redirectToRoute('admin.study.index');
+            $error = false;
+
+            // Check constraint on end date and current value
+            if (empty($form->get('endDate')->getData()) && !$form->get('current')->getData()) {
+                $this->addFlash('error', "End date must be set or current should be selected");
+                $error = true;
+            } else if (!empty($form->get('endDate')->getData()) && $form->get('current')->getData()) {
+                $this->addFlash('error', "End date and current couldn't be set at the same time");
+                $error = true;
+            }
+
+            // Form is valid
+            if (!$error) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($study);
+                $entityManager->flush();
+                $this->addFlash('success', "Item has been successfully added");
+                return $this->redirectToRoute('admin.study.index');
+            }
         }
 
         return $this->render('back/study/add.html.twig', [
@@ -49,7 +63,7 @@ class StudyController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="show", methods={"GET"})
+     * @Route("/show/{id}", name="show", methods={"GET"}, requirements={"id"="\d+"})
      */
     public function show(Study $study): Response
     {
@@ -59,7 +73,7 @@ class StudyController extends AbstractController
     }
 
     /**
-     * @Route("/edit/{id}", name="edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Study $study): Response
     {
@@ -79,7 +93,7 @@ class StudyController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="delete", methods={"DELETE"}, requirements={"id"="\d+"})
      */
     public function delete(Request $request, Study $study): Response
     {

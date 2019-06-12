@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('admin.setting.lang.disable', {'id': lang.id}) }}" onsubmit="return confirm('Are you sure you want to disable this language ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('disable' ~ lang.id) }}">
+    <button class="btn btn-danger"      {% if lang.locale == "en" %}  disabled='true' {% endif %}>Disable</button>
+</form>

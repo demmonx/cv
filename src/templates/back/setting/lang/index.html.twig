@@ -1,0 +1,43 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}Settings{% endblock %}
+{% block title %}Settings{% endblock %}
+
+{% block title_content %}Langs{% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Locale</th>
+                <th>Enabled ?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lang in langs %}
+            <tr>
+                <td>{{ lang.name }}</td>
+                <td>{{ lang.locale }}</td>
+                <td>{{ lang.enabled ? "Yes" : "No" }}</td>
+
+                <td>
+                    {% if lang.enabled %}
+                    {{ include('back/setting/lang/_disable_form.html.twig') }}
+                        {% else %}
+                        <a href="{{ path('admin.study.show', {'id': lang.id}) }}"><button
+                            class='btn btn-success'>Enable</button></a>
+                        {% endif %}
+                <a href="{{ path('admin.study.edit', {'id': lang.id}) }}"><button class='btn btn-info'>Edit</button></a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
