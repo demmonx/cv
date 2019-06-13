@@ -9,12 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Lang
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -22,6 +16,7 @@ class Lang
     private $name;
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="string", length=2)
      */
     private $locale;
@@ -31,10 +26,6 @@ class Lang
      */
     private $enabled;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getName(): ?string
     {
@@ -60,7 +51,7 @@ class Lang
         return $this;
     }
 
-    public function getEnabled(): ?bool
+    public function isEnabled(): ?bool
     {
         return $this->enabled;
     }

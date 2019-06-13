@@ -94,6 +94,19 @@
         $('.js-datepicker').datepicker({
             format: 'yyyy-mm-dd'
         });
+
+        $('.selectpicker').change(function() {
+    
+            $.ajax({
+                method: "POST",
+                url: $(this).attr("data-target"),
+                data: {id: $(this).val()},
+                success : function(code_html, statut){ // code_html contient le HTML renvoyé
+                    location.reload(); 
+                },
+              });
+        });
+        
        
     });
 }(jQuery));

@@ -23,12 +23,12 @@
 
                 <td>
                     {% if lang.enabled %}
+                    <a href="{{ path('admin.setting.lang.edit', {'id': lang.locale}) }}"><button class='btn btn-info'>Edit</button></a>
                     {{ include('back/setting/lang/_disable_form.html.twig') }}
                         {% else %}
-                        <a href="{{ path('admin.study.show', {'id': lang.id}) }}"><button
+                        <a href="{{ path('admin.setting.lang.enable', {'id': lang.locale}) }}"><button
                             class='btn btn-success'>Enable</button></a>
                         {% endif %}
-                <a href="{{ path('admin.study.edit', {'id': lang.id}) }}"><button class='btn btn-info'>Edit</button></a>
                 </td>
 
             </tr>

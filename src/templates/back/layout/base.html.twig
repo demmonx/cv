@@ -16,6 +16,10 @@
 
 			<div class="header-right">
 				<ul>
+					<li>{{ render(controller(
+							'App\\Controller\\Back\\Setting\\LangController::listAvailable'
+						)) }}
+					</li>
 					<li><a href='{{path("homepage")}}'><button class='btn btn-info'>Website</button></a></li>
 					<li><a href='{{path("logout")}}'><button class='btn btn-danger'>Logout</button></a></li>
 				</ul>

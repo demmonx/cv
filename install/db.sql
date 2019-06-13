@@ -1,10 +1,3 @@
--- Set sequence as next item to run insert command
-ALTER TABLE "lang"
-ALTER "id" TYPE integer,
-ALTER "id" SET DEFAULT nextval('lang_id_seq'),
-ALTER "id" SET NOT NULL;
-
-
 -- Set composed primary key
 ALTER TABLE "translation"
 ADD CONSTRAINT "translation_key_lang_id" PRIMARY KEY ("key", "lang_id"),

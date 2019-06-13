@@ -1,0 +1,14 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}Settings{% endblock %}
+{% block title %}Settings{% endblock %}
+
+{% block title_content %}Enable a lang : {{lang.name}} {% endblock %}
+
+{% block body %}
+
+    {{ form(form) }}
+
+    <ul class='options'>
+            <li><a href="{{ path('admin.setting.lang.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
+        </ul>
+{% endblock %}

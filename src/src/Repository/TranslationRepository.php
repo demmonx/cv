@@ -16,7 +16,7 @@ class TranslationRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Translatio::class);
+        parent::__construct($registry, Translation::class);
     }
 
     // /**

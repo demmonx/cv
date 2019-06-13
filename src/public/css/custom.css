@@ -31,8 +31,20 @@
 .mb-red {
     background-color:#d36f2e;
 }
-.mb-pink {
-    background-color:#FF2F71;
+.mb-blue {
+    background-color:rgb(0, 84, 209);
+}
+.mb-green {
+    background-color:rgb(4, 129, 0);
+}
+.mb-grey {
+    background-color:rgb(94, 94, 94);
+}
+.mb-lightblue {
+    background-color:rgb(30, 184, 255);
+}
+.mb-orange {
+    background-color:rgb(252, 127, 45);
 }
     .main-box h5 {
         font-size:16px;
@@ -248,7 +260,7 @@ ul#filters {
         display: inline-block;
         
     }
-    .header-right ul li button {
+    .header-right ul li button, .header-right ul li select {
         text-transform: uppercase;
         font-weight: bold;
     }
@@ -302,3 +314,36 @@ ul#filters {
     td form {
         display: inline-block;
     }
+
+    form .spacing-bottom {
+        margin-bottom: 10px;
+    }
+
+    .selectpicker { 
+    color: #fff;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    border-radius: 4px;

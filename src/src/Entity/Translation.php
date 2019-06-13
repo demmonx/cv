@@ -10,7 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Translation
 {
 
-    public static $keys = ["about-me", "exp", "project", "resume", "contact"];
+    public static $keys = [
+        "about-me" => "About me",
+        "exp" => "Experiences",
+        "project" => "Projects", 
+        "resume" => "Resume",
+        "contact" => "Contact",
+        "skill" => "Skill"];
      
     /**
      * @ORM\Id()
@@ -31,7 +37,7 @@ class Translation
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Lang")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
      */
     private $lang;
 

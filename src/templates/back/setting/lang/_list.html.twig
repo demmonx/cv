@@ -1,0 +1,5 @@
+<select class="selectpicker mdb-select md-form" data-width="fit" data-target="{{path('admin.setting.lang.switch') }}">
+    {% for lang in langs %}
+        <option value='{{ lang.locale }}' {% if app.session.get('lang').locale == lang.locale %} selected='selected' {% endif %}>{{ lang.name }}</option>
+    {% endfor%}
+</select>
