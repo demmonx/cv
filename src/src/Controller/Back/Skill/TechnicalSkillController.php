@@ -20,8 +20,9 @@ class TechnicalSkillController extends AbstractController
      */
     public function index(TechnicalSkillRepository $technicalSkillRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/technical/index.html.twig', [
-            'technical_skills' => $technicalSkillRepository->findAll(),
+            'technical_skills' => $technicalSkillRepository->findBy(["lang" => $lang]),
         ]);
     }
 
@@ -34,9 +35,11 @@ class TechnicalSkillController extends AbstractController
         $form = $this->createForm(TechnicalSkillType::class, $technicalSkill);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($technicalSkill);
+            $lang = $this->get('session')->get('lang');
+            $technicalSkill->setLang($lang);
+            $entityManager->merge($technicalSkill);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.skill.technical.index');

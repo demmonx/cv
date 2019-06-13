@@ -20,8 +20,9 @@ class SoftSkillController extends AbstractController
      */
     public function index(SoftSkillRepository $softSkillRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/soft/index.html.twig', [
-            'soft_skills' => $softSkillRepository->findAll(),
+            'soft_skills' => $softSkillRepository->findBy(["lang" => $lang]),
         ]);
     }
 
@@ -34,9 +35,11 @@ class SoftSkillController extends AbstractController
         $form = $this->createForm(SoftSkillType::class, $softSkill);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($softSkill);
+            $lang = $this->get('session')->get('lang');
+            $softSkill->setLang($lang);
+            $entityManager->merge($softSkill);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.skill.soft.index');
@@ -50,7 +53,7 @@ class SoftSkillController extends AbstractController
 
 
     /**
-     * @Route("/edit/{id}", name="admin.skill.soft.edit", methods={"GET","POST"}, requirements={"id"="\d+"})
+     * @Route("/edit/{id}", name="edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, SoftSkill $softSkill): Response
     {

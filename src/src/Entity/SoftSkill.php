@@ -21,6 +21,12 @@ class SoftSkill
      */
     private $name;
 
+        /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lang")
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
+     */
+    private $lang;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +40,18 @@ class SoftSkill
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getLang(): ?Lang
+    {
+        return $this->lang;
+    }
+
+    public function setLang(?Lang $lang): self
+    {
+        $this->lang = $lang;
 
         return $this;
     }

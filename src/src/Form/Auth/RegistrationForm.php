@@ -75,6 +75,7 @@ class RegistrationForm extends AbstractType
             ])
             ->add('jobLabel', TextType::class, [
                 'label' => false,
+                'mapped' => false,
                 'attr' => [
                     'class' => "form-control",
                     'placeHolder' => 'Job label'

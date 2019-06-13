@@ -26,6 +26,12 @@ class Hobby
      */
     private $text;
 
+        /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Lang")
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
+     */
+    private $lang;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +57,18 @@ class Hobby
     public function setText(string $text): self
     {
         $this->text = $text;
+
+        return $this;
+    }
+
+    public function getLang(): ?Lang
+    {
+        return $this->lang;
+    }
+
+    public function setLang(?Lang $lang): self
+    {
+        $this->lang = $lang;
 
         return $this;
     }

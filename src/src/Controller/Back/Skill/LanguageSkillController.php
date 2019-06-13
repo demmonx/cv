@@ -20,8 +20,9 @@ class LanguageSkillController extends AbstractController
      */
     public function index(LanguageSkillRepository $languageSkillRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/language/index.html.twig', [
-            'language_skills' => $languageSkillRepository->findAll(),
+            'language_skills' => $languageSkillRepository->findBy(["lang" => $lang]),
         ]);
     }
 
@@ -34,9 +35,11 @@ class LanguageSkillController extends AbstractController
         $form = $this->createForm(LanguageSkillType::class, $languageSkill);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($languageSkill);
+            $lang = $this->get('session')->get('lang');
+            $languageSkill->setLang($lang);
+            $entityManager->merge($languageSkill);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.skill.language.index');

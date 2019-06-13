@@ -20,8 +20,9 @@ class HobbyController extends AbstractController
      */
     public function index(HobbyRepository $hobbyRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/hobby/index.html.twig', [
-            'hobbies' => $hobbyRepository->findAll(),
+            'hobbies' => $hobbyRepository->findBy(["lang" => $lang]),
         ]);
     }
 
@@ -34,9 +35,11 @@ class HobbyController extends AbstractController
         $form = $this->createForm(HobbyType::class, $hobby);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($hobby);
+            $lang = $this->get('session')->get('lang');
+            $hobby->setLang($lang);
+            $entityManager->merge($hobby);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.hobby.index');
@@ -66,7 +69,7 @@ class HobbyController extends AbstractController
         $form = $this->createForm(HobbyType::class, $hobby);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', "Item has been successfully edited");

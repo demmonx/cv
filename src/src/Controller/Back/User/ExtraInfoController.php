@@ -20,8 +20,9 @@ class ExtraInfoController extends AbstractController
      */
     public function index(ExtraInfoRepository $extraInfoRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/user/extra/index.html.twig', [
-            'extra_infos' => $extraInfoRepository->findAll(),
+            'extra_infos' => $extraInfoRepository->findBy(["lang" => $lang]),
         ]);
     }
 
@@ -51,13 +52,18 @@ class ExtraInfoController extends AbstractController
      */
     public function add(Request $request): Response
     {
+        
         $extraInfo = new ExtraInfo();
+        
+        
         $form = $this->createForm(ExtraInfoType::class, $extraInfo);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($extraInfo);
+            $lang = $this->get('session')->get('lang');
+            $extraInfo->setLang($lang);
+            $entityManager->merge($extraInfo);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.user.extra.index');

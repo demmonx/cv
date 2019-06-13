@@ -20,8 +20,9 @@ class StudyController extends AbstractController
      */
     public function index(StudyRepository $studyRepository): Response
     {
+        $lang = $this->get('session')->get('lang');
         return $this->render('back/study/index.html.twig', [
-            'studies' => $studyRepository->findAll(),
+            'studies' => $studyRepository->findBy(["lang" => $lang])
         ]);
     }
 
@@ -34,7 +35,7 @@ class StudyController extends AbstractController
         $form = $this->createForm(StudyType::class, $study);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted()) {
             $error = false;
 
             // Check constraint on end date and current value
@@ -49,7 +50,9 @@ class StudyController extends AbstractController
             // Form is valid
             if (!$error) {
                 $entityManager = $this->getDoctrine()->getManager();
-                $entityManager->persist($study);
+                $lang = $this->get('session')->get('lang');
+                $study->setLang($lang);
+                $entityManager->merge($study);
                 $entityManager->flush();
                 $this->addFlash('success', "Item has been successfully added");
                 return $this->redirectToRoute('admin.study.index');

@@ -35,10 +35,6 @@ class User implements UserInterface
      */
     private $firstname;
 
-        /**
-     * @ORM\Column(type="string", length=180)
-     */
-    private $jobLabel;
 
     /**
      * @ORM\Column(type="string", length=30)
@@ -55,6 +51,8 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+
+    private $jobLabel;
 
     public function __construct() {
         $this->roles = ['ROLE_USER'];
@@ -90,7 +88,7 @@ class User implements UserInterface
     }
 
     public function getJobLabel(): ?string
-    {
+    { 
         return $this->jobLabel;
     }
 

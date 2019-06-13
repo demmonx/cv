@@ -7,7 +7,9 @@
 
                 <span class='name'>{{ app.user.firstname }} {{ app.user.lastname }}</span>
                 <br />
-                <span class='email'>{{ app.user.jobLabel }} </span>
+                <span class='email'>{{ render(controller(
+                        'App\\Controller\\Back\\User\\UserController::printJobTitle'
+                    )) }}</span>
                 <br />
                 <span class='email'>{{ app.user.username }} </span>
             </div>

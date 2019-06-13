@@ -31,14 +31,17 @@ class MainController extends AbstractController
       if (! $this->get('session')->has('lang')) {
         $this->get('session')->set('lang', $langRepo->findOneBy(['locale' => 'en']));
       }
+
+      $lang = $this->get('session')->get('lang');
+
 		return $this->render("/back/index.html.twig", [
       "langs" => $langRepo->findBy(['enabled' => true]),
-      "hobbies" => $hobbyRepo->findAll(),
-      "spoken" => $skillLanguageRepo->findAll(),
-      "technical" => $skillTechnicalRepo->findAll(),
-      "soft" => $skillSoftRepo->findAll(),
-      "studies" => $studyRepo->findAll(),
-      "socials" => $socialRepo->findAll()
+      "hobbies" => $hobbyRepo->findBy(['lang' => $lang]),
+      "spoken" => $skillLanguageRepo->findBy(['lang' => $lang]),
+      "technical" => $skillTechnicalRepo->findBy(['lang' => $lang]),
+      "soft" => $skillSoftRepo->findBy(['lang' => $lang]),
+      "studies" => $studyRepo->findBy(['lang' => $lang]),
+      "socials" => $socialRepo->findAll(),
     ]);
     }
     

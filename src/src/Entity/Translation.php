@@ -11,12 +11,19 @@ class Translation
 {
 
     public static $keys = [
+        "job-title" => "Job title",
         "about-me" => "About me",
         "exp" => "Experiences",
         "project" => "Projects", 
         "resume" => "Resume",
         "contact" => "Contact",
-        "skill" => "Skill"];
+        "skill" => "Skills",
+        "soft" => "Soft Skills",
+        "education" => "Education",
+        "hobbies" => "Hobbies",
+        "others" => "Others",
+        "lang" => "Languages",
+    ];
      
     /**
      * @ORM\Id()
