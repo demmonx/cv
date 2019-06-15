@@ -1,0 +1,43 @@
+{{ form_start(form) }}
+{{ form_errors(form) }}
+{{ form_errors(form.name) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-life-ring"></i></span>
+    {{ form_widget(form.name) }}
+</div>
+{{ form_errors(form.location) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+    {{ form_widget(form.location) }}
+</div>
+
+
+{{ form_errors(form.startDate) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-calendar-o"></i></span>
+    {{ form_widget(form.startDate) }}
+</div>
+
+{{ form_errors(form.endDate) }}
+{{ form_errors(form.current) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-calendar-times-o"></i></span>
+    {{ form_widget(form.endDate) }}
+    {{ form_label(form.current) }}
+    {{ form_widget(form.current) }}
+</div>
+
+{{ form_errors(form.content) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+    {{ form_widget(form.content) }}
+</div>
+
+{{ form_errors(form.enabled) }}
+<div class="form-group input-group">
+    {{ form_label(form.enabled) }}
+    {{ form_widget(form.enabled) }}
+</div>
+
+{{ form_widget(form.submit) }} 
+{{ form_end(form) }}

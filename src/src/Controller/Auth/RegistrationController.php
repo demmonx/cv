@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 class RegistrationController extends AbstractController
 {
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/install", name="app_register")
      */
     public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, Authenticator $authenticator): Response
     {
@@ -30,7 +30,7 @@ class RegistrationController extends AbstractController
         ->getSingleScalarResult();
 
         if ($users > 0) {
-            //return $this->redirectToRoute('homepage'); 
+            return $this->redirectToRoute('homepage'); 
         }
         $user = new User();
         $form = $this->createForm(RegistrationForm::class, $user);

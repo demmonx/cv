@@ -26,6 +26,20 @@ class StudyController extends AbstractController
         ]);
     }
 
+    private function validForm($form)
+    {
+        // Check constraint on end date and current value
+        if (empty($form->get('endDate')->getData()) && !$form->get('current')->getData()) {
+            $this->addFlash('error', "End date must be set or current should be selected");
+            return false;
+        }
+        if (!empty($form->get('endDate')->getData()) && $form->get('current')->getData()) {
+            $this->addFlash('error', "End date and current couldn't be set at the same time");
+            return false;
+        }
+        return true;
+    }
+
     /**
      * @Route("/add", name="add", methods={"GET","POST"})
      */
@@ -35,28 +49,15 @@ class StudyController extends AbstractController
         $form = $this->createForm(StudyType::class, $study);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
-            $error = false;
+        if ($form->isSubmitted() && $this->validForm($form)) {
 
-            // Check constraint on end date and current value
-            if (empty($form->get('endDate')->getData()) && !$form->get('current')->getData()) {
-                $this->addFlash('error', "End date must be set or current should be selected");
-                $error = true;
-            } else if (!empty($form->get('endDate')->getData()) && $form->get('current')->getData()) {
-                $this->addFlash('error', "End date and current couldn't be set at the same time");
-                $error = true;
-            }
-
-            // Form is valid
-            if (!$error) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $lang = $this->get('session')->get('lang');
-                $study->setLang($lang);
-                $entityManager->merge($study);
-                $entityManager->flush();
-                $this->addFlash('success', "Item has been successfully added");
-                return $this->redirectToRoute('admin.study.index');
-            }
+            $entityManager = $this->getDoctrine()->getManager();
+            $lang = $this->get('session')->get('lang');
+            $study->setLang($lang);
+            $entityManager->merge($study);
+            $entityManager->flush();
+            $this->addFlash('success', "Item has been successfully added");
+            return $this->redirectToRoute('admin.study.index');
         }
 
         return $this->render('back/study/add.html.twig', [
@@ -83,7 +84,7 @@ class StudyController extends AbstractController
         $form = $this->createForm(StudyType::class, $study);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $this->validForm($form)) {
             $this->getDoctrine()->getManager()->flush();
             $this->addFlash('success', "Item has been successfully edited");
             return $this->redirectToRoute('admin.study.index');
@@ -100,7 +101,7 @@ class StudyController extends AbstractController
      */
     public function delete(Request $request, Study $study): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$study->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $study->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($study);
             $entityManager->flush();

@@ -1,0 +1,45 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My experiences{% endblock %}
+{% block title %}Projects{% endblock %}
+
+{% block title_content %}Projects{% endblock %}
+
+{% block body %}
+<div>
+        <a href="{{ path('admin.experience.project.add') }}"><button class='text-uppercase btn btn-success'>Add new</button></a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>End Date</th>
+                <th>Is Visible ?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for project in projects %}
+            <tr>
+                <td>{{ project.name }}</td>
+                <td>{{ project.current ? "Current" : (project.endDate ? project.endDate|date('d M Y') : '') }}</td>
+                <td>{{ project.enabled ? "Yes" : "No" }}</td>
+
+                <td>
+                    <a href="{{ path('admin.experience.project.show', {'id': project.id}) }}"><button
+                            class='btn btn-info'>Show</button></a>
+                    <a href="{{ path('admin.experience.project.edit', {'id': project.id}) }}"><button class='btn btn-info'>Edit</button></a>
+                    {{ include('back/experience/project/_delete_form.html.twig') }}
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
