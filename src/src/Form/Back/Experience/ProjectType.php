@@ -87,8 +87,32 @@ class ProjectType extends AbstractType
                 ]),
             ],
         ])
+        ->add('schoolProject', CheckboxType::class, [
+            "label" => "School project ?",
+            'required' => false,
+            "attr" => [
+                'class' => "",
+            ]
+        ])
+        ->add('technos', TextType::class, [
+            "mapped" => false,
+            "attr" => [
+                'class' => "form-control",
+                "required" => "false",
+                'data-role' => "tagsinput",
+                "placeholder" => "Technologies (ex: Java, Git, etc)"
+            ],
+            'constraints' => [
+                new Length([
+                    'min' => 2,
+                    'minMessage' => 'The location should be at least {{ limit }} characters',
+                    // max length allowed by Symfony for security reasons
+                    'max' => 155,
+                ]),
+            ],
+        ])
         ->add('enabled', CheckboxType::class, [
-            "label" => "Visible ?",
+            "label" => "Visible on the resume ?",
             'required' => false,
             "attr" => [
                 'class' => "",
@@ -112,8 +136,6 @@ class ProjectType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Project::class,
-        ]);
+
     }
 }

@@ -91,7 +91,7 @@ class StudyType extends AbstractType
                 ],
             ])
             ->add('enabled', CheckboxType::class, [
-                "label" => "Visible ?",
+                "label" => "Visible on the resume ?",
                 'required' => false,
                 "attr" => [
                     'class' => "",

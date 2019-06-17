@@ -38,8 +38,9 @@ class SoftSkillController extends AbstractController
         if ($form->isSubmitted()) {
             $entityManager = $this->getDoctrine()->getManager();
             $lang = $this->get('session')->get('lang');
+            $lang = $this->getDoctrine()->getRepository(Lang::class)->find($lang->getLocale());
             $softSkill->setLang($lang);
-            $entityManager->merge($softSkill);
+            $entityManager->persist($softSkill);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.skill.soft.index');

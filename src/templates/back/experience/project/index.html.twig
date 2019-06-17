@@ -15,6 +15,7 @@
                 <th>Name</th>
                 <th>End Date</th>
                 <th>Is Visible ?</th>
+                <th>School project ?</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ project.name }}</td>
                 <td>{{ project.current ? "Current" : (project.endDate ? project.endDate|date('d M Y') : '') }}</td>
                 <td>{{ project.enabled ? "Yes" : "No" }}</td>
+                <td>{{ project.schoolProject ? "Yes" : "No" }}</td>
 
                 <td>
                     <a href="{{ path('admin.experience.project.show', {'id': project.id}) }}"><button

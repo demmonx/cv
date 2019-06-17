@@ -13,10 +13,9 @@ class Technology
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=100)
      */
-    private $id;
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -24,19 +23,19 @@ class Technology
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="technos")
+     * @ORM\OneToMany(targetEntity="App\Entity\ProjectTechnology", mappedBy="technos")
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
      */
     private $projects;
+
+
 
     public function __construct()
     {
         $this->projects = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+
 
     public function getName(): ?string
     {
@@ -50,6 +49,18 @@ class Technology
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Project[]
      */
@@ -58,23 +69,5 @@ class Technology
         return $this->projects;
     }
 
-    public function addProject(Project $project): self
-    {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->addTechno($this);
-        }
 
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->projects->contains($project)) {
-            $this->projects->removeElement($project);
-            $project->removeTechno($this);
-        }
-
-        return $this;
-    }
 }

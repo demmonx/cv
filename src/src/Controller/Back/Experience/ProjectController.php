@@ -3,6 +3,12 @@
 namespace App\Controller\Back\Experience;
 
 use App\Entity\Project;
+use App\Entity\Technology;
+use App\Entity\Lang;
+
+use App\Entity\ProjectTechnology;
+
+use Cocur\Slugify\Slugify;
 use App\Form\Back\Experience\ProjectType;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,9 +44,15 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $this->validForm($form)) {
                 $entityManager = $this->getDoctrine()->getManager();
                 $lang = $this->get('session')->get('lang');
+                $lang = $this->getDoctrine()->getRepository(Lang::class)->find($lang->getLocale());
                 $project->setLang($lang);
-                $entityManager->merge($project);
+                $entityManager->persist($project);
                 $entityManager->flush();
+
+                $technos = $form->get('technos')->getData();   
+                if (!empty($technos) && strlen($technos) > 2) {
+                    $project = $this->addTechno($project, $technos, $entityManager);
+                }
                 $this->addFlash('success', "Item has been successfully added");
                 return $this->redirectToRoute('admin.experience.project.index');
         }
@@ -49,6 +61,40 @@ class ProjectController extends AbstractController
             'project' => $project,
             'form' => $form->createView(),
         ]);
+    }
+
+    private function addTechno($project, $techs, $em) {
+        # Parse form data
+        $techs = explode(",", $techs);
+        $slugify = new Slugify();
+        $technos = [];
+        foreach($techs as $techno) {
+            $technos[$slugify->slugify($techno)] = $techno;
+        }
+
+        # Check if data exist 
+        $technoRepo = $this->getDoctrine()->getRepository(Technology::class);
+        foreach($technos as $k => $v) {
+            $val = $technoRepo->find($k);
+            if ($val != null) { # value existe
+                // do nothing
+            } else {    # Value must be created
+                $val = new Technology();
+                $val->setSlug($k);
+                $val->setName($v);
+                $em->persist($val);
+                $em->flush();
+            }
+
+            $projectTechno = new ProjectTechnology();
+            $projectTechno->setProject($project);
+            $projectTechno->setTechnology($val);
+            $em->persist($projectTechno);
+            $em->flush();
+
+        }
+    
+        return $project;
     }
 
     private function validForm($form)

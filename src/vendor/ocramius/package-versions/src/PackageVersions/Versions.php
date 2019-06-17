@@ -14,6 +14,7 @@ final class Versions
 {
     public const ROOT_PACKAGE_NAME = '__root__';
     public const VERSIONS          = array (
+  'cocur/slugify' => 'v3.2@d41701efe58ba2df9cae029c3d21e1518cc6780e',
   'doctrine/annotations' => 'v1.6.1@53120e0eb10355388d6ccbe462f1fea34ddadb24',
   'doctrine/cache' => 'v1.8.0@d768d58baee9a4862ca783840eca1b9add7a7f57',
   'doctrine/collections' => 'v1.6.1@d2ae4ef05e25197343b6a39bae1d3c427a2f6956',
@@ -119,7 +120,7 @@ final class Versions
   'symfony/phpunit-bridge' => 'v4.3.0@7bfc1b57d1ac9513703391498aa8da4764388bc6',
   'symfony/profiler-pack' => 'v1.0.4@99c4370632c2a59bb0444852f92140074ef02209',
   'symfony/test-pack' => 'v1.0.5@1792b80cc2da5310e84afa983682b71dfc409d17',
-  'symfony/var-dumper' => 'v4.3.0@2fd2ecf7913fb96f0c2e941ca15bb702184c6574',
+  'symfony/var-dumper' => 'v4.3.1@f974f448154928d2b5fb7c412bd23b81d063f34b',
   'symfony/web-profiler-bundle' => 'v4.3.0@b371e362dada3c1fcd9e7f7a31a91bd681860331',
   'symfony/web-server-bundle' => 'v4.3.0@a5391b6a4ac78d518dd3f0ee5f40bcc9a7ee6fe7',
   'paragonie/random_compat' => '2.*@',

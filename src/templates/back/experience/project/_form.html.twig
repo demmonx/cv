@@ -33,11 +33,25 @@
     {{ form_widget(form.content) }}
 </div>
 
+{{ form_errors(form.technos) }}
+<div class="form-group input-group">
+    <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+    {{ form_widget(form.technos) }}
+</div>
+
+
+{{ form_errors(form.schoolProject) }}
+<div class="form-group input-group">
+    {{ form_label(form.schoolProject) }}
+    {{ form_widget(form.schoolProject) }}
+</div>
+
 {{ form_errors(form.enabled) }}
 <div class="form-group input-group">
     {{ form_label(form.enabled) }}
     {{ form_widget(form.enabled) }}
 </div>
+
 
 {{ form_widget(form.submit) }} 
 {{ form_end(form) }}

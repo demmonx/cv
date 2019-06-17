@@ -6,39 +6,51 @@
 
 {% block body %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Name</th>
-                <td>{{ project.name }}</td>
-            </tr>
-            <tr>
-                <th>Location</th>
-                <td>{{ project.location }}</td>
-            </tr>
-            <tr>
-                <th>Start Date</th>
-                <td>{{ project.startDate ? project.startDate|date('d M Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>End Date</th>
-                <td>{{ project.current ? "Current" : (project.endDate ? project.endDate|date('d M Y') : '') }}</td>
-            </tr>
-            <tr>
-                <th>Details</th>
-                <td>{{ project.content|nl2br }}</td>
-            </tr>
-            <tr>
-                    <th>Visible</th>
-                    <td>{{ project.enabled ? "Yes" : "No" }}</td>
-                </tr>
-        </tbody>
-    </table>
+<table class="table">
+    <tbody>
+        <tr>
+            <th>Name</th>
+            <td>{{ project.name }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ project.location }}</td>
+        </tr>
+        <tr>
+            <th>Start Date</th>
+            <td>{{ project.startDate ? project.startDate|date('d M Y') : '' }}</td>
+        </tr>
+        <tr>
+            <th>End Date</th>
+            <td>{{ project.current ? "Current" : (project.endDate ? project.endDate|date('d M Y') : '') }}</td>
+        </tr>
+        <tr>
+            <th>Details</th>
+            <td>{{ project.content|nl2br }}</td>
+        </tr>
+        <tr>
+            <th>Technos ?</th>
+            <td class='tag-show'><input type="text"   disabled="disabled" data-role="tagsinput" value="{% for techno in project.technos %}
+                {{ techno.technology.name }},
+                {% endfor %}" /> </td>
+        </tr>
+        <tr>
+            <th>Visible ?</th>
+            <td>{{ project.enabled ? "Yes" : "No" }}</td>
+        </tr>
 
-    <ul class='options'>
-        <li><a href="{{ path('admin.experience.project.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
-        <li> <a href="{{ path('admin.experience.project.edit', {'id': project.id}) }}"><button class='btn btn-success'>Edit</button></a></li>
-        <li>{{ include('back/experience/project/_delete_form.html.twig') }}</li>
-    </ul>
+        <tr>
+            <th>School project ?</th>
+            <td>{{ project.schoolProject ? "Yes" : "No" }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class='options'>
+    <li><a href="{{ path('admin.experience.project.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
+    <li> <a href="{{ path('admin.experience.project.edit', {'id': project.id}) }}"><button
+                class='btn btn-success'>Edit</button></a></li>
+    <li>{{ include('back/experience/project/_delete_form.html.twig') }}</li>
+</ul>
 
 {% endblock %}

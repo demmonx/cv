@@ -347,3 +347,22 @@ ul#filters {
         border-bottom-color: transparent;
         border-left-color: transparent;
     border-radius: 4px;
+    }
+
+    .bootstrap-tagsinput {
+        width: 100%;
+    }
+    .bootstrap-tagsinput  input {
+        width: 50%;
+    }
+
+    .tag-show .bootstrap-tagsinput .tag [data-role="remove"] {
+        display: none;
+    }
+
+    .tag-show .bootstrap-tagsinput {
+        border: 0px;
+        box-shadow: none;
+        padding: 0;
+        font-size: 16px;
+    }

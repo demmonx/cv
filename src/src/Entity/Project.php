@@ -38,7 +38,11 @@ class Project
      */
     private $endDate;
 
-            /**
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $schoolProject;
+    /**
      * @ORM\Column(type="boolean")
      */
     private $enabled;
@@ -60,6 +64,11 @@ class Project
      */
     private $current;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ProjectTechnology", mappedBy="project")
+     * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
+     */
+    private $technos;
 
     public function __construct()
     {
@@ -103,6 +112,18 @@ class Project
     public function setEnabled(?bool $enabled): self
     {
         $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    public function isSchoolProject(): ?bool
+    {
+        return $this->schoolProject;
+    }
+
+    public function setSchoolProject(?bool $schoolProject): self
+    {
+        $this->schoolProject = $schoolProject;
 
         return $this;
     }
@@ -166,5 +187,12 @@ class Project
 
         return $this;
     }
+
+    public function getTechnos() : Collection
+    {
+        return $this->technos;
+    }
+
+
 
 }

@@ -53,8 +53,10 @@ class StudyController extends AbstractController
 
             $entityManager = $this->getDoctrine()->getManager();
             $lang = $this->get('session')->get('lang');
+            $lang = $this->getDoctrine()->getRepository(Lang::class)->find($lang->getLocale());
+
             $study->setLang($lang);
-            $entityManager->merge($study);
+            $entityManager->persist($study);
             $entityManager->flush();
             $this->addFlash('success', "Item has been successfully added");
             return $this->redirectToRoute('admin.study.index');
