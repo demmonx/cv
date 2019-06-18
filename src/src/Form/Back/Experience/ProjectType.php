@@ -40,9 +40,10 @@ class ProjectType extends AbstractType
             ],
         ])
         ->add('location', TextType::class, [
+            'required' => false,
+            'empty_data' => null,
             "attr" => [
                 'class' => "form-control",
-                "required" => "false",
                 "placeholder" => "Location"
             ],
             'constraints' => [
@@ -96,9 +97,10 @@ class ProjectType extends AbstractType
         ])
         ->add('technos', TextType::class, [
             "mapped" => false,
+            "required" => false,
+            "data" => gettype($options['data']) == "array" ? $options['data']["technos"] : '' ,
             "attr" => [
                 'class' => "form-control",
-                "required" => "false",
                 'data-role' => "tagsinput",
                 "placeholder" => "Technologies (ex: Java, Git, etc)"
             ],
@@ -136,6 +138,8 @@ class ProjectType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+            //'data_class' => Project::class,
+        ]);
     }
 }

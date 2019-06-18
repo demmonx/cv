@@ -3,23 +3,20 @@
 namespace App\Controller\Back\Experience;
 
 use App\Entity\Project;
-use App\Entity\Technology;
 use App\Entity\Lang;
-
-use App\Entity\ProjectTechnology;
-
-use Cocur\Slugify\Slugify;
 use App\Form\Back\Experience\ProjectType;
 use App\Repository\ProjectRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 
 /**
  * @Route("/experience/project", name="admin.experience.project.")
  */
-class ProjectController extends AbstractController
+class ProjectController extends AbstractExperienceController
 {
     /**
      * @Route("/", name="index", methods={"GET"})
@@ -38,23 +35,27 @@ class ProjectController extends AbstractController
     public function add(Request $request): Response
     {
         $project = new Project();
-        $form = $this->createForm(ProjectType::class, $project);
+        $form = $this->createForm(ProjectType::class, $project, []);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $this->validForm($form)) {
-                $entityManager = $this->getDoctrine()->getManager();
-                $lang = $this->get('session')->get('lang');
-                $lang = $this->getDoctrine()->getRepository(Lang::class)->find($lang->getLocale());
-                $project->setLang($lang);
-                $entityManager->persist($project);
-                $entityManager->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $lang = $this->get('session')->get('lang');
+            $lang = $this->getDoctrine()->getRepository(Lang::class)->find($lang->getLocale());
+            $project->setLang($lang);
+            $entityManager->persist($project);
+            $entityManager->flush();
 
-                $technos = $form->get('technos')->getData();   
-                if (!empty($technos) && strlen($technos) > 2) {
-                    $project = $this->addTechno($project, $technos, $entityManager);
-                }
-                $this->addFlash('success', "Item has been successfully added");
-                return $this->redirectToRoute('admin.experience.project.index');
+            $technos = $form->get('technos')->getData();
+            if (!empty($technos) && strlen($technos) > 2) {
+                $project = $this->sync($project, $technos, $entityManager, [
+                    "src" => "App\Entity\Project",
+                    "dest" => "App\Entity\Technology",
+                    "join" => "App\Entity\ProjectTechnology"]);
+            }
+
+            $this->addFlash('success', "Item has been successfully added");
+            return $this->redirectToRoute('admin.experience.project.index');
         }
 
         return $this->render('back/experience/project/add.html.twig', [
@@ -63,39 +64,18 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    private function addTechno($project, $techs, $em) {
-        # Parse form data
-        $techs = explode(",", $techs);
-        $slugify = new Slugify();
-        $technos = [];
-        foreach($techs as $techno) {
-            $technos[$slugify->slugify($techno)] = $techno;
-        }
-
-        # Check if data exist 
-        $technoRepo = $this->getDoctrine()->getRepository(Technology::class);
-        foreach($technos as $k => $v) {
-            $val = $technoRepo->find($k);
-            if ($val != null) { # value existe
-                // do nothing
-            } else {    # Value must be created
-                $val = new Technology();
-                $val->setSlug($k);
-                $val->setName($v);
-                $em->persist($val);
-                $em->flush();
-            }
-
-            $projectTechno = new ProjectTechnology();
-            $projectTechno->setProject($project);
-            $projectTechno->setTechnology($val);
-            $em->persist($projectTechno);
-            $em->flush();
-
-        }
-    
-        return $project;
+    protected function setJoinValues($object, $joinItem, $otherItem): Object {
+        $joinItem->setProject($object);
+        $joinItem->setTechnology($otherItem);
+        return $joinItem;
     }
+
+    protected function setValue($item, $key, $value) : Object {
+        $item->setSlug($key);
+        $item->setName($value);
+        return $item;
+    }
+    
 
     private function validForm($form)
     {
@@ -121,16 +101,60 @@ class ProjectController extends AbstractController
         ]);
     }
 
+    protected function getCurrentValues($object, $em, $joinRepo) : array {
+        $data = [];
+        foreach ( $object->getTechnos() as $val) {
+            $data[$val->getTechnology()->getSlug()] = $val->getTechnology()->getName(); 
+        }
+        return $data;    
+    }
+
+    protected function getValue($object, $key, $joinRepo) : Object {
+        return $joinRepo->findOneBy(["project" => $object, "technology" => $key]);
+    }
+
     /**
      * @Route("/edit/{id}", name="edit", methods={"GET","POST"}, requirements={"id"="\d+"})
      */
     public function edit(Request $request, Project $project): Response
     {
-        $form = $this->createForm(ProjectType::class, $project);
+        # Generate data to fill the form
+        $normalizer = new ObjectNormalizer();
+        $serializer = new Serializer([new DateTimeNormalizer("Y-m-d"), $normalizer]);
+        $data = $serializer->normalize($project, null, ['skip_null_values' => true, 'ignored_attributes' => ['technos', 'lang']]);
+
+        # Obtain technos
+        $technos = [];
+        foreach($project->getTechnos() as $k => $v) {
+            $technos[$v->getTechnology()->getSlug()] = $v->getTechnology()->getName();
+        }
+        $technos = ["technos" => implode (",", $technos )];
+
+        # Create form with data
+        foreach($data as $k => $v) {
+            $date = \DateTime::createFromFormat('Y-m-d', $v);
+            if ($date) {
+                $data[$k] = $date;
+            }
+        }
+        $data = array_merge($data, $technos);
+
+        $form = $this->createForm(ProjectType::class, $project, ["data" => $data]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid() && $this->validForm($form)) {
+        if ($form->isSubmitted() && $this->validForm($form)) {
             $this->getDoctrine()->getManager()->flush();
+
+            // Update technos
+            $technos = $form->get('technos')->getData();
+            if (!empty($technos) && strlen($technos) > 2) {
+                $project = $this->sync($project, $technos, $this->getDoctrine()->getManager(), [
+                    "src" => "App\Entity\Project",
+                    "dest" => "App\Entity\Technology",
+                    "join" => "App\Entity\ProjectTechnology"]);
+            }
+            return new Response();
+
             $this->addFlash('success', "Item has been successfully edited");
             return $this->redirectToRoute('admin.exeperience.project.index');
         }
