@@ -1,8 +1,3 @@
--- Set composed primary key
-ALTER TABLE "translation"
-ADD CONSTRAINT "translation_key_lang_id" PRIMARY KEY ("key", "lang_id"),
-DROP CONSTRAINT "translation_pkey";
-
 INSERT INTO lang (name, locale, enabled)VALUES( 'English', 'en', true),
 ( 'Afar', 'aa',false),
 ( 'Abkhazian', 'ab',false),

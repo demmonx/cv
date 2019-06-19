@@ -106,7 +106,7 @@
                 },
               });
         });
-        
-       
+
+        new FroalaEditor('.editor', {toolbarInline: false});
     });
 }(jQuery));

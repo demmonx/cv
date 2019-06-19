@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\JobRepository")
  */
-class Project
+class Job
 {
     /**
      * @ORM\Id()
@@ -24,12 +24,12 @@ class Project
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $location;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date")
      */
     private $startDate;
 
@@ -41,14 +41,14 @@ class Project
     /**
      * @ORM\Column(type="boolean")
      */
-    private $schoolProject;
+    private $internship;
     /**
      * @ORM\Column(type="boolean")
      */
     private $enabled;
 
         /**
-     * @ORM\Column(type="text", nullable=true)
+     * @ORM\Column(type="text")
      */
     private $content;
 
@@ -65,7 +65,7 @@ class Project
     private $current;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ProjectTechnology", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="App\Entity\JobTechnology", mappedBy="job")
      * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
      */
     private $technos;
@@ -97,7 +97,7 @@ class Project
         return $this->content;
     }
 
-    public function setContent(?string $content): self
+    public function setContent(string $content): self
     {
         $this->content = $content;
 
@@ -116,14 +116,14 @@ class Project
         return $this;
     }
 
-    public function isSchoolProject(): ?bool
+    public function isInternship(): ?bool
     {
-        return $this->schoolProject;
+        return $this->internship;
     }
 
-    public function setSchoolProject(?bool $schoolProject): self
+    public function setInternship(?bool $internship): self
     {
-        $this->schoolProject = $schoolProject;
+        $this->internship = $internship;
 
         return $this;
     }
@@ -145,7 +145,7 @@ class Project
         return $this->location;
     }
 
-    public function setLocation(?string $location): self
+    public function setLocation(string $location): self
     {
         $this->location = $location;
 
@@ -157,7 +157,7 @@ class Project
         return $this->startDate;
     }
 
-    public function setStartDate(?\DateTimeInterface $startDate): self
+    public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
 

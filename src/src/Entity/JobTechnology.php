@@ -7,17 +7,19 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProjectTechnologyRepository")
- * @ORM\Table(name="project_technology")
+ * @ORM\Entity(repositoryClass="App\Repository\JobTechnologyRepository")
+ * @ORM\Table(name="job_technology")
  */
-class ProjectTechnology
+class JobTechnology
 {
+
+
     /**
      * @ORM\Id()
-     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="technos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Job", inversedBy="technos")
      * @ORM\JoinColumn(nullable=false, referencedColumnName="id")
      */
-    private $project;    
+    private $job;    
     
     /**
      * @ORM\Id()
@@ -26,13 +28,13 @@ class ProjectTechnology
      */
     private $technology;
 
-    public function setProject(?Project $project): self {
-        $this->project = $project;
+    public function setJob(?Job $job): self {
+        $this->job = $job;
         return $this;
     }
 
-    public function getProject() :?Project {
-        return $this->project;
+    public function getJob() :?Job {
+        return $this->job;
     }
 
     public function setTechnology(?Technology $technology): self {

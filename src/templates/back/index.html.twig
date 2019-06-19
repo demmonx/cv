@@ -5,10 +5,38 @@
 {% block title_content %}DASHBOARD{% endblock %}
 
 {% block body %}
-
 <!-- /. ROW  -->
 <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
+        <div class="main-box mb-blue">
+            <a href="{{path("admin.experience.job.index")}}">
+                <i class="fa fa-globe fa-5x"></i>
+                <h5>{{ jobs | length}} jobs</h5>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="main-box mb-green">
+            <a href="{{path("admin.experience.project.index")}}">
+                <i class="fa fa-coffee fa-5x"></i>
+                <h5>{{ projects | length}} Projects</h5>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="main-box mb-black">
+            <a href="{{path("admin.study.index")}}">
+                <i class="fa fa-graduation-cap fa-5x"></i>
+                <h5>{{ studies | length}} Studies completed</h5>
+            </a>
+        </div>
+    </div>    
+
+</div>
+<!-- /. ROW  -->
+<!-- /. ROW  -->
+<div class="row">
+    <div class="col-md-4">
         <div class="main-box mb-grey">
             <a href="{{path("admin.setting.lang.index")}}">
                 <i class="fa fa-globe fa-5x"></i>
@@ -16,23 +44,15 @@
             </a>
         </div>
     </div>
-    <div class="col-md-3">
-        <div class="main-box mb-blue">
+    <div class="col-md-4">
+        <div class="main-box mb-violet">
             <a href="{{path("admin.hobby.index")}}">
                 <i class="fa fa-coffee fa-5x"></i>
                 <h5>{{ hobbies | length}} Hobbies</h5>
             </a>
         </div>
-    </div>
-    <div class="col-md-3">
-        <div class="main-box mb-green">
-            <a href="{{path("admin.study.index")}}">
-                <i class="fa fa-graduation-cap fa-5x"></i>
-                <h5>{{ studies | length}} Studies completed</h5>
-            </a>
-        </div>
-    </div>    
-    <div class="col-md-3">
+    </div>   
+    <div class="col-md-4">
         <div class="main-box mb-orange">
             <a href="{{path("admin.user.social.index")}}">
                 <i class="fa fa-facebook-square fa-5x"></i>
@@ -43,6 +63,7 @@
 
 </div>
 <!-- /. ROW  -->
+
 <!-- /. ROW  -->
 <div class="row">
         <div class="col-md-4">
@@ -54,7 +75,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="main-box mb-dull">
+            <div class="main-box mb-lightblue">
                 <a href="#">
                     <i class="fa fa-weixin fa-5x"></i>
                     <h5>{{ spoken | length}} spoken languages</h5>
@@ -62,7 +83,7 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="main-box mb-lightblue">
+            <div class="main-box mb-dull">
                 <a href="#">
                     <i class="fa fa-users fa-5x"></i>
                     <h5>{{ soft | length}} soft skills</h5>
@@ -71,5 +92,7 @@
         </div>    
     
     </div>
+
+      
 <!--/.ROW-->
 {% endblock %}

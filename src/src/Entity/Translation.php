@@ -25,19 +25,15 @@ class Translation
         "lang" => "Languages",
     ];
      
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="string", length=255)
      */
     private $key;
 
     /**
+     * @ORM\Id()
      * @ORM\Column(type="string", length=255)
      */
     private $value;
@@ -47,12 +43,6 @@ class Translation
      * @ORM\JoinColumn(nullable=false, referencedColumnName="locale")
      */
     private $lang;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
     public function getKey(): ?string
     {
         return $this->key;

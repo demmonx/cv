@@ -7,6 +7,8 @@ use App\Entity\TechnicalSkill;
 use App\Entity\SoftSkill;
 use App\Entity\Study;
 use App\Entity\Social;
+use App\Entity\Project;
+use App\Entity\Job;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +28,8 @@ class MainController extends AbstractController
       $skillSoftRepo = $this->getDoctrine()->getRepository(SoftSkill::class);
       $studyRepo = $this->getDoctrine()->getRepository(Study::class);
       $socialRepo = $this->getDoctrine()->getRepository(Social::class);
+      $projectRepo = $this->getDoctrine()->getRepository(Project::class);
+      $jobRepo = $this->getDoctrine()->getRepository(Job::class);
 
       // Set the lang to default value
       if (! $this->get('session')->has('lang')) {
@@ -40,7 +44,9 @@ class MainController extends AbstractController
       "spoken" => $skillLanguageRepo->findBy(['lang' => $lang]),
       "technical" => $skillTechnicalRepo->findBy(['lang' => $lang]),
       "soft" => $skillSoftRepo->findBy(['lang' => $lang]),
-      "studies" => $studyRepo->findBy(['lang' => $lang]),
+      "studies" => $studyRepo->findBy(['lang' => $lang]),      
+      "projects" => $projectRepo->findBy(['lang' => $lang]),
+      "jobs" => $jobRepo->findBy(['lang' => $lang]),
       "socials" => $socialRepo->findAll(),
     ]);
     }

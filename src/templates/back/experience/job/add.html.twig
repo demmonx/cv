@@ -1,0 +1,13 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My experiences{% endblock %}
+{% block title %}Job{% endblock %}
+
+{% block title_content %}Add a job{% endblock %}
+
+{% block body %}
+    {{ include('back/experience/job/_form.html.twig') }}
+
+    <ul class='options'>
+            <li><a href="{{ path('admin.experience.job.index') }}"><button class='btn btn-warning'>Go back</button></a></li>
+        </ul>
+{% endblock %}
