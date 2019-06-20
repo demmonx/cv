@@ -1,0 +1,5 @@
+<form class='inline' method="post" action="{{ path('admin.homepage.revert', {'id': homepage.id}) }}" onsubmit="return confirm('Are you sure you want to revert to this revision ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('revert' ~ homepage.id) }}">
+    <button class="btn btn-warning">Revert</button>
+</form>

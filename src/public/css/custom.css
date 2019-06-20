@@ -375,3 +375,15 @@ ul#filters {
         padding: 0;
         font-size: 16px;
     }
+
+    .fr-box {
+        margin-bottom: 10px;
+    }
+
+    .list-group-item {
+        margin: 15px;
+    }
+
+    .inline {
+        display: inline-block;
+    }

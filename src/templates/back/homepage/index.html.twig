@@ -1,0 +1,30 @@
+{% extends 'back/layout/base.html.twig' %}
+{% block title_section %}My Homepage{% endblock %}
+{% block title %}Homepage{% endblock %}
+
+{% block title_content %}Homepage{% endblock %}
+
+{% block body %}
+
+    {{ include('back/homepage/_form.html.twig') }}
+
+
+    <div class="row">
+        {% for homepage in pages %}
+        <div class="list-group"> <div class="list-group-item {{ homepage.id == current_revision.id ? 'active' : '' }}">
+                <h4 class="list-group-item-heading">
+                    REVISION : {{ homepage.timestamp ? homepage.timestamp|date('Y-m-d H:i:s') : '' }}
+                    {% if homepage.id != current_revision.id %}
+                        {{ include('back/homepage/_revert_form.html.twig') }}
+                    {% endif %}
+                </h4>
+                <p class="list-group-item-text" style="line-height:30px;">  {{ homepage.content | raw }}</p>
+            </div>
+        </div>
+        {% else %}
+        <div class="list-group"> <div class="list-group-item ">
+                <h4 class="list-group-item-heading">No previous revision</h4>
+                </div></div>
+        {% endfor %}
+
+{% endblock %}
