@@ -48,15 +48,6 @@ class UserController extends AbstractController
         
     }
 
-    public function printJobTitle()
-    {
-        $lang = $this->get('session')->get('lang');
-        $translationRepo = $this->getDoctrine()->getRepository(Translation::class);
-        $label = $translationRepo->findOneBy(['lang' => $lang, 'key' => 'job-title'])->getValue();
-        return new Response($label);
-        
-    }
-
 
 
 }

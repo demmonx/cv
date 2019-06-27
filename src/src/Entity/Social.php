@@ -28,7 +28,11 @@ class Social
 
     public static $choices = [
         "Facebook" => "facebook",
-        "Instagram" => "instgram"
+        "Instagram" => "instagram",
+        "YouTube" => "youtube",
+        "LinkedIn" => "linkedin",
+        "Twitter" => "twitter",
+        "StackOverflow" => "stackoverflow",
     ]; 
 
     public function getId(): ?int

@@ -64,7 +64,6 @@ class LangController extends AbstractController
     public function enable(Request $request, TranslationRepository $translationRepository, Lang $lang): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $values = [];
         // Check if lang is alrerady enabled
         if ($lang->isEnabled()) {
             $this->addFlash('warning', $lang->getName() . " is already enabled");

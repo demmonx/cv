@@ -1,0 +1,3 @@
+{% for lang in langs %}
+    <li class=''><a href="{{path('switch_language', {'locale': lang.locale}) }}">{{ lang.locale }}</a></li>
+{% endfor%}
