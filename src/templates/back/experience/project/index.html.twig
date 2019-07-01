@@ -14,6 +14,7 @@
             <tr>
                 <th>Name</th>
                 <th>End Date</th>
+                <th>Start Date</th>
                 <th>Is Visible ?</th>
                 <th>School project ?</th>
                 <th>Actions</th>
@@ -23,7 +24,8 @@
         {% for project in projects %}
             <tr>
                 <td>{{ project.name }}</td>
-                <td>{{ project.current ? "Current" : (project.endDate ? project.endDate|date('d M Y') : '') }}</td>
+                <td>{{ project.startDate is null ? "-" : project.startDate|date('M Y') }}</td>
+                <td>{{ project.current ? "Current" : project.endDate|date('M Y')  }}</td>
                 <td>{{ project.enabled ? "Yes" : "No" }}</td>
                 <td>{{ project.schoolProject ? "Yes" : "No" }}</td>
 
@@ -37,7 +39,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">No records found</td>
+                <td colspan="5">No records found</td>
             </tr>
         {% endfor %}
         </tbody>

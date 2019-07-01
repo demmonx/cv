@@ -25,7 +25,7 @@ class JobController extends AbstractExperienceController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/experience/job/index.html.twig', [
-            'jobs' => $jobRepository->findBy(["lang" => $lang])
+            'jobs' => $jobRepository->findBy(["lang" => $lang], ["startDate" => "DESC"])
         ]);
     }
 
@@ -143,20 +143,25 @@ class JobController extends AbstractExperienceController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $this->validForm($form)) {
+            if (empty($form->get('enabled')->getData())) {
+                $job->setEnabled(false);
+            }
+            if (empty($form->get('schoolProject')->getData())) {
+                $job->setInternship(false);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             // Update technos
             $technos = $form->get('technos')->getData();
             if (!empty($technos) && strlen($technos) > 2) {
-                $job = $this->sync($job, $technos, $this->getDoctrine()->getManager(), [
+                $this->sync($job, $technos, $this->getDoctrine()->getManager(), [
                     "src" => "App\Entity\Job",
                     "dest" => "App\Entity\Technology",
                     "join" => "App\Entity\JobTechnology"]);
             }
-            return new Response();
 
             $this->addFlash('success', "Item has been successfully edited");
-            return $this->redirectToRoute('admin.exeperience.job.index');
+            return $this->redirectToRoute('admin.experience.job.index');
         }
 
         return $this->render('back/experience/job/edit.html.twig', [
@@ -179,6 +184,6 @@ class JobController extends AbstractExperienceController
             $this->addFlash('error', "Unable to remove the item");
         }
 
-        return $this->redirectToRoute('admin.exeperience.job.index');
+        return $this->redirectToRoute('admin.experience.job.index');
     }
 }

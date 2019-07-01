@@ -23,6 +23,9 @@ class Translation
         "hobbies" => "Hobbies",
         "others" => "Others",
         "lang" => "Languages",
+        'school-project' => "School project",
+        "current" => "Current",
+        "internship" => "Internship"
     ];
      
 

@@ -14,3 +14,6 @@ hr {
 .first-item {
 	padding-top: 15px;
 }
+.w3-card .w3-container:last-child hr {
+	display: none;
+}

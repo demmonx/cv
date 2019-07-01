@@ -8,7 +8,8 @@ use App\Repository\HobbyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Annotation\Route;use App\Entity\Lang;
+
 
 /**
  * @Route("/hobby", name="admin.hobby.")

@@ -3,6 +3,8 @@
 namespace App\Controller\Back\Skill;
 
 use App\Entity\LanguageSkill;
+use App\Entity\Lang;
+
 use App\Form\Back\Skill\LanguageSkillType;
 use App\Repository\LanguageSkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,7 +24,7 @@ class LanguageSkillController extends AbstractController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/language/index.html.twig', [
-            'language_skills' => $languageSkillRepository->findBy(["lang" => $lang]),
+            'language_skills' => $languageSkillRepository->findBy(["lang" => $lang], ["name" => "ASC"]),
         ]);
     }
 

@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller\Front;
+use App\Entity\ExtraInfo;
 use App\Repository\SocialRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -60,17 +61,19 @@ class MainController extends AbstractController
         $studyRepo = $this->getDoctrine()->getRepository(Study::class);
         $projectRepo = $this->getDoctrine()->getRepository(Project::class);
         $jobRepo = $this->getDoctrine()->getRepository(Job::class);
+        $extraRepo = $this->getDoctrine()->getRepository(ExtraInfo::class);
 
         $lang = $request->getLocale();
 
         return $this->render('front/pages/cv.html.twig', [
+            "extras" => $extraRepo->findBy(['lang' => $lang]),
             "hobbies" => $hobbyRepo->findBy(['lang' => $lang]),
-            "spoken" => $skillLanguageRepo->findBy(['lang' => $lang]),
-            "technical" => $skillTechnicalRepo->findBy(['lang' => $lang]),
-            "soft" => $skillSoftRepo->findBy(['lang' => $lang]),
-            "studies" => $studyRepo->findBy(['lang' => $lang]),
-            "projects" => $projectRepo->findBy(['lang' => $lang]),
-            "jobs" => $jobRepo->findBy(['lang' => $lang]),
+            "spoken" => $skillLanguageRepo->findBy(['lang' => $lang], ["level" => "DESC"]),
+            "technical" => $skillTechnicalRepo->findBy(['lang' => $lang], ["level" => "DESC"]),
+            "soft" => $skillSoftRepo->findBy(['lang' => $lang], ["name" => "ASC"]),
+            "studies" => $studyRepo->findBy(['lang' => $lang, 'enabled' => true], ["endDate" => "DESC"]),
+            "projects" => $projectRepo->findBy(['lang' => $lang, 'enabled' => true], ["endDate" => "DESC"]),
+            "jobs" => $jobRepo->findBy(['lang' => $lang, 'enabled' => true], ["startDate" => "DESC"]),
         ]);
     }
 

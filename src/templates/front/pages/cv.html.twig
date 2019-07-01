@@ -25,65 +25,39 @@
           <hr>
 
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>{{ translate.run(app.request.locale, "skill") }}</b></p>
-          <p>PHP, jQuery, CSS, HMTL</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">
-              <div class="w3-center w3-text-white">90%</div>
+          {% for skill in technical %}
+            <p>{{ skill.name }}</p>
+            <div class="w3-light-grey w3-round-xlarge w3-small">
+              <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:{{ skill.level }}%">
+                <div class="w3-center w3-text-white">{{ skill.level }}%</div>
+              </div>
             </div>
-          </div>
-          <p>Java</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
-          </div>
-          <p>Bash</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:65%">60%</div>
-          </div>
-          <p>C</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:60%">60%</div>
-          </div>
-          <p>Python</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:30%">30%</div>
-          </div>
-          <p>Android</p>
-          <div class="w3-light-grey w3-round-xlarge w3-small">
-            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:30%">30%</div>
-          </div>
+          {% endfor %}
           <br>
           
           <p class="w3-large"><b><i class="fa fa-users fa-fw 
           w3-margin-right w3-text-teal"></i>{{ translate.run(app.request.locale, "soft") }}</b></p>
-          <p><i class="fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
-          w3-text-teal"></i> Curieux</p>
-          <p><i class="fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
-          w3-text-teal"></i> Organisé</p>
-          <p><i class="fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
-          w3-text-teal"></i> Autonome</p>
-          <p><i class="fa fa fa-asterisk fa-fw w3-tiny w3-margin-right 
-          w3-text-teal"></i> Team player</p>
+          {% for skill in soft %}
+            <p><i class="fa fa fa-asterisk fa-fw w3-tiny w3-margin-right
+            w3-text-teal"></i> {{ skill.name }}</p>
+          {% endfor %}
+          <br>
 
           <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>{{ translate.run(app.request.locale, "lang") }}</b></p>
-          <p>Français</p>
+          {% for skill in spoken %}
+          <p>{{ skill.name }}</p>
           <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:{{ skill.level }}%"></div>
           </div>
-          <p>Anglais (TOEIC 920)</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:70%"></div>
-          </div>
-          <p>Espagnol</p>
-          <div class="w3-light-grey w3-round-xlarge">
-            <div class="w3-round-xlarge w3-teal" style="height:24px;width:35%"></div>
-          </div>
+          {% endfor %}
           <br>
           
           <p class="w3-large"><b><i class="fa fa-question fa-fw w3-margin-right w3-text-teal"></i>{{ translate.run(app.request.locale, "others") }}</b></p>
-          <p><i class="fa fa-address-card fa-fw w3-margin-right 
-          w3-text-teal"></i> Permis de conduire</p>
-          <p><i class="fa fa-car fa-fw w3-margin-right w3-text-teal"></i> Véhicule personnel</p>
-          
+          {% for extra in extras %}
+          <p><i class="fa {{ extra.icon }} fa-fw w3-margin-right
+          w3-text-teal"></i> {{ extra.name }}</p>
+          {% endfor %}
+
           
         </div>
       </div><br>
@@ -98,75 +72,76 @@
     
       <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-10"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>{{ translate.run(app.request.locale, "exp") }}</h2>
+        {% for job in jobs %}
         <div class="w3-container">
-          <h5 class="w3-opacity"><b>Administrateur système</b> - <i>SII, Toulouse, France (stage)</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mars 2019 - <span class="w3-tag w3-teal w3-round">Actuel</span></h6>
-          <p>Développement d'un système pour déployer automatiquement une infratructure sécurisée basée sur une fichier de configuration facilement compréhensible par un humain et décrivant toute la configuration de l'infrastrucure</p>
+          <h5 class="w3-opacity"><b>{{ job.name }}</b> - <i>{{ job.location }} {%  if job.internship %}({{ translate.run(app.request.locale, "internship") }}){% endif %}</i></h5>
+          <h6 class="w3-text-teal">
+            <i class="fa fa-calendar fa-fw w3-margin-right"></i>
+            {{ job.startDate|localizeddate('full', 'none', app.request.locale, null, "LLL Y") }} -
+            {%  if job.current %}
+              <span class='w3-tag w3-teal w3-round'>{{ translate.run(app.request.locale, "current") }}</span>
+            {% else %}
+              {{ job.endDate|localizeddate('full', 'none', app.request.locale, null, "LLL Y") }}
+            {% endif %}
+          </h6>
+          <p>{{ job.content|nl2br }}</p>
           <hr>
         </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Développeur Web (Symfony)</b> - 
-          <i>Check Your Smile, Toulouse, France (projet scolaire)</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Janvier 2019 - Mars 2019</h6>
-          <p>Conception, développement et implémentation de nouveaux modules, débugage des parties existantes du site</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Analyste Big Data</b> - <i>SUPSI, 
-          Manno, Suisse (stage)</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Juin 2017 - Juillet 2017</h6>
-          <p>Analyse du comportement d'utilisateurs basés sur leurs activités sur les réseaux sociaux et leurs objets connectés, avec Python</p>
-			<hr>
-        </div>
-        <div class="w3-container">
-           <h5 class="w3-opacity"><b>Dépannage informatique</b> - 
-           <i>IT Center, Soual, France (stage)</i></h5>
-           <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Juillet 2017 - Août 2017</h6>
-           <p>Dépannage (logiciel et matériel) d'ordinateurs portables et fixes, pour particuliers et professionnels, vente de matériel informatique</p>
-			<hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Développeur Web (Laravel)</b> - 
-          <i>Stratégies Web International, Québec, Canada (stage)</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mars 2016 - Juin 2016</h6>
-          <p>Conception d'un portail web, configuration de serveurs (web, base de données, mail, git)</p>
-        </div>
+        {% endfor %}
+      </div>
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-10"><i class="fa fa-book fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>{{ translate.run(app.request.locale, "project") }}</h2>
+        {% for project in projects %}
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>{{ project.name }}</b> - <i>{{ project.location }} {%  if project.schoolProject %}({{ translate.run(app.request.locale, "school-project") }}){% endif %}</i></h5>
+            <h6 class="w3-text-teal">
+              <i class="fa fa-calendar fa-fw w3-margin-right"></i>
+              {%  if project.startDate is not null %}
+                {{ project.startDate|localizeddate('full', 'none', app.request.locale, null, "LLL Y") }} -
+              {% endif %}
+              {%  if project.current %}
+                <span class='w3-tag w3-teal w3-round'>{{ translate.run(app.request.locale, "current") }}</span>
+              {% else %}
+                {{ project.endDate|localizeddate('full', 'none', app.request.locale, null, "LLL Y") }}
+              {% endif %}
+            </h6>
+            <p>{{ project.content|nl2br }}</p>
+            <hr>
+          </div>
+        {% endfor %}
       </div>
 
-      <div class="w3-container w3-card w3-white">
+      <div class="w3-container w3-card w3-white w3-margin-bottom">
         <h2 class="w3-text-grey w3-padding-10"><i class="fa fa-certificate fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>{{ translate.run(app.request.locale, "education") }}</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Diplôme d'ingénieur</b> - <i>ENSEEIHT, Toulouse, France</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 - 2019</h6>
-          <p>Mathématiques, Programmation, Réseaux, Systèmes</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>DUT Informatique</b> - <i>IUT de Rodez, France</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014 - 2016</h6>
-          <p>Mathématiques, Programmation, Réseaux, Systèmes</p>
-          <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Baccalauréat scientifique</b> - <i>Lycée Borde Basse, Castres, France</i></h5>
-          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014</h6>
-          <p>Mention Bien <br />
-			Physique, Chimie, Mathématiques, Sciences de l'Ingénieur
-		</p><br>
-        </div>
+        {% for study in studies %}
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>{{ study.name }}</b> - <i>{{ study.location }} </i></h5>
+            <h6 class="w3-text-teal">
+              <i class="fa fa-calendar fa-fw w3-margin-right"></i>
+              {%  if study.startDate is not null %}
+                {{ study.startDate|localizeddate('full', 'none', app.request.locale, null, "Y") }} -
+              {% endif %}
+              {%  if study.current %}
+                <span class='w3-tag w3-teal w3-round'>{{ translate.run(app.request.locale, "current") }}</span>
+              {% else %}
+                {{ study.endDate|localizeddate('full', 'none', app.request.locale, null, "Y") }}
+              {% endif %}
+            </h6>
+            <p>{{ study.content|nl2br }}</p>
+            <hr>
+          </div>
+        {% endfor %}
       </div>
       
       <div class="w3-container w3-card w3-white">
         <h2 class="w3-text-grey w3-padding-10"><i class="fa fa-television fa-fw w3-margin-right w3-xlarge w3-text-teal"></i>{{ translate.run(app.request.locale, "hobbies") }}</h2>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>VTT</b></h5>
-          <p>Ouverture et maintenance des chemins existants, rouler tous les WE, quelques compétitions (régionnales et nationales), faire de la mécanique</p>
+        {% for hobby in hobbies %}
+          <div class="w3-container">
+            <h5 class="w3-opacity"><b>{{ hobby.name }}</b></h5>
+            <p>{{ hobby.text|nl2br }}</p>
+          </div>
           <hr>
-        </div>
-        <div class="w3-container">
-          <h5 class="w3-opacity"><b>Voyages</b></h5>
-          <p>Découvrir de nouvelles destinations, visiter des nouveaux pays et villes, j'ai voyagé plusieurs fois pour mes études (stage au Quebec et en Suisse)</p>
-        </div>
+        {% endfor %}
       </div>
 
     <!-- End Right Column -->

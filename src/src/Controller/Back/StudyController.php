@@ -4,6 +4,7 @@ namespace App\Controller\Back;
 
 use App\Entity\Study;
 use App\Form\Back\StudyType;
+use App\Entity\Lang;
 use App\Repository\StudyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class StudyController extends AbstractController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/study/index.html.twig', [
-            'studies' => $studyRepository->findBy(["lang" => $lang])
+            'studies' => $studyRepository->findBy(["lang" => $lang], ["endDate" => "DESC"])
         ]);
     }
 

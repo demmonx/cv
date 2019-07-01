@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Start Date</th>
                 <th>End Date</th>
                 <th>Is Visible ?</th>
                 <th>Actions</th>
@@ -22,7 +23,8 @@
         {% for study in studies %}
             <tr>
                 <td>{{ study.name }}</td>
-                <td>{{ study.current ? "Current" : (study.endDate ? study.endDate|date('d M Y') : '') }}</td>
+                <td>{{ study.startDate is null ? "-" : study.startDate|date('Y') }}</td>
+                <td>{{ study.current ? "Current" : study.endDate|date('Y')  }}</td>
                 <td>{{ study.enabled ? "Yes" : "No" }}</td>
 
                 <td>
@@ -35,7 +37,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">No records found</td>
+                <td colspan="5">No records found</td>
             </tr>
         {% endfor %}
         </tbody>

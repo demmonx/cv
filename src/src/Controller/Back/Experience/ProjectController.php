@@ -25,7 +25,7 @@ class ProjectController extends AbstractExperienceController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/experience/project/index.html.twig', [
-            'projects' => $projectRepository->findBy(["lang" => $lang])
+            'projects' => $projectRepository->findBy(["lang" => $lang], ["startDate" => "DESC", "endDate" => "DESC"])
         ]);
     }
 
@@ -143,6 +143,13 @@ class ProjectController extends AbstractExperienceController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $this->validForm($form)) {
+            if (empty($form->get('enabled')->getData())) {
+                $project->setEnabled(false);
+            }
+            if (empty($form->get('schoolProject')->getData())) {
+                $project->setSchoolProject(false);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             // Update technos
@@ -153,10 +160,9 @@ class ProjectController extends AbstractExperienceController
                     "dest" => "App\Entity\Technology",
                     "join" => "App\Entity\ProjectTechnology"]);
             }
-            return new Response();
 
             $this->addFlash('success', "Item has been successfully edited");
-            return $this->redirectToRoute('admin.exeperience.project.index');
+            return $this->redirectToRoute('admin.experience.project.index');
         }
 
         return $this->render('back/experience/project/edit.html.twig', [
@@ -179,6 +185,6 @@ class ProjectController extends AbstractExperienceController
             $this->addFlash('error', "Unable to remove the item");
         }
 
-        return $this->redirectToRoute('admin.exeperience.project.index');
+        return $this->redirectToRoute('admin.experience.project.index');
     }
 }

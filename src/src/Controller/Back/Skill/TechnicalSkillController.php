@@ -4,6 +4,7 @@ namespace App\Controller\Back\Skill;
 
 use App\Entity\TechnicalSkill;
 use App\Form\Back\Skill\TechnicalSkillType;
+use App\Entity\Lang;
 use App\Repository\TechnicalSkillRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class TechnicalSkillController extends AbstractController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/technical/index.html.twig', [
-            'technical_skills' => $technicalSkillRepository->findBy(["lang" => $lang]),
+            'technical_skills' => $technicalSkillRepository->findBy(["lang" => $lang], ["name" => "ASC"]),
         ]);
     }
 

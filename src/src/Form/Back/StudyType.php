@@ -62,7 +62,7 @@ class StudyType extends AbstractType
                 'html5' => false,
                 'required' => false,
                 "attr" => [
-                    'class' => "js-datepicker",
+                    'class' => "js-datepicker-year",
                     "placeholder" => "Start date",
                 ]
             ])
@@ -71,7 +71,7 @@ class StudyType extends AbstractType
                 'html5' => false,
                 'required' => false,
                 "attr" => [
-                    'class' => "js-datepicker",
+                    'class' => "js-datepicker-year",
                     "placeholder" => "End date",
                 ]
             ])

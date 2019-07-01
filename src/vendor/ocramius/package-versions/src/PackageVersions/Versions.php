@@ -102,6 +102,7 @@ final class Versions
   'symfony/var-exporter' => 'v4.3.0@2b7c857d553423b2317ac0741fb2581d9bfd8fb7',
   'symfony/web-link' => 'v4.3.0@af0e386322f192ed50bd9c812daedce05368733c',
   'symfony/yaml' => 'v4.3.0@c60ecf5ba842324433b46f58dc7afc4487dbab99',
+  'twig/extensions' => 'v1.5.4@57873c8b0c1be51caa47df2cdb824490beb16202',
   'twig/twig' => 'v2.11.1@0418e17113266e84c03ccf758680af8abc4b22dc',
   'webmozart/assert' => '1.4.0@83e253c8e0be5b0257b881e1827274667c5c17a9',
   'zendframework/zend-code' => '3.3.1@c21db169075c6ec4b342149f446e7b7b724f95eb',

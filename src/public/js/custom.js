@@ -94,6 +94,16 @@
         $('.js-datepicker').datepicker({
             format: 'yyyy-mm-dd'
         });
+        $('.js-datepicker-year').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: "years",
+            minViewMode: "years"
+        });
+        $('.js-datepicker-month').datepicker({
+            format: 'yyyy-mm-dd',
+            viewMode: "months",
+            minViewMode: "months"
+        });
 
         $('.selectpicker').change(function() {
     

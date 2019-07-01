@@ -13,6 +13,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Start Date</th>
                 <th>End Date</th>
                 <th>Is Visible ?</th>
                 <th>Internship ?</th>
@@ -23,7 +24,8 @@
         {% for job in jobs %}
             <tr>
                 <td>{{ job.name }}</td>
-                <td>{{ job.current ? "Current" : (job.endDate ? job.endDate|date('d M Y') : '') }}</td>
+                <td>{{ job.startDate|date('M Y') }}</td>
+                <td>{{ job.current ? "Current" : job.endDate|date('M Y') }}</td>
                 <td>{{ job.enabled ? "Yes" : "No" }}</td>
                 <td>{{ job.internship ? "Yes" : "No" }}</td>
 
@@ -37,7 +39,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">No records found</td>
+                <td colspan="5">No records found</td>
             </tr>
         {% endfor %}
         </tbody>

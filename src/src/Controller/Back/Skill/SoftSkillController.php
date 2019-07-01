@@ -5,6 +5,7 @@ namespace App\Controller\Back\Skill;
 use App\Entity\SoftSkill;
 use App\Form\Back\Skill\SoftSkillType;
 use App\Repository\SoftSkillRepository;
+use App\Entity\Lang;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class SoftSkillController extends AbstractController
     {
         $lang = $this->get('session')->get('lang');
         return $this->render('back/skill/soft/index.html.twig', [
-            'soft_skills' => $softSkillRepository->findBy(["lang" => $lang]),
+            'soft_skills' => $softSkillRepository->findBy(["lang" => $lang], ["name" => "ASC"]),
         ]);
     }
 

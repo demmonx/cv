@@ -60,7 +60,7 @@ class ProjectType extends AbstractType
             'html5' => false,
             'required' => false,
             "attr" => [
-                'class' => "js-datepicker",
+                'class' => "js-datepicker-month",
                 "placeholder" => "Start date",
             ]
         ])
@@ -69,7 +69,7 @@ class ProjectType extends AbstractType
             'html5' => false,
             'required' => false,
             "attr" => [
-                'class' => "js-datepicker",
+                'class' => "js-datepicker-month",
                 "placeholder" => "End date",
             ]
         ])
